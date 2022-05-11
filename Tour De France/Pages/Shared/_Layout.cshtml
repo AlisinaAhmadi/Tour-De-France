@@ -6,6 +6,7 @@
     <title>@ViewData["Title"] - Tour_De_France</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/EventCss.css" />
 </head>
 <body>
     <header>
@@ -24,6 +25,34 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area=""asp-page="/Event/GetAllEvents">Events</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area=""asp-page="/Admin/CreateDeltager">Lav Bruger</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav">
+                        @{
+                            if (Context.User.Identity.Name==null)
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="" asp-page="/LogIn/LogIn">Login</a>
+                                </li>
+                            }
+                            else
+                            {
+                                if (Context.User.Identity.Name != null)
+                                {
+                                    <li class="nav-item nav-link mr-3">
+                                        User:  @Context.User.Identity.Name
+                                    </li>
+                                }
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="" asp-page="/LogIn/LogOut">Logout</a>
+                                </li>
+                            } 
+                        }
                     </ul>
                 </div>
             </div>
