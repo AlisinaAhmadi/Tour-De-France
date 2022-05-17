@@ -9,10 +9,8 @@ namespace Tour_De_France.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         [Required]
-        [StringLength(50)]
         public string Name { get; set; }
         [Required]
-        [StringLength(8)]
         public string Mobil { get; set; }
         [Required]
         public string Email { get; set; }
@@ -24,10 +22,13 @@ namespace Tour_De_France.Models
         {
             
         }
-        public Deltager(string email,string password)
+        public Deltager(string name, string mobil,string email,string password)
         {
+            Name = name;
+            Mobil = mobil;
             Email = email;
             Password = password;
+            
         }
     }
 }

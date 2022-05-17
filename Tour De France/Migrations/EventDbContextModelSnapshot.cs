@@ -31,13 +31,15 @@ namespace Tour_De_France.Migrations
 
                     b.Property<string>("Mobil")
                         .IsRequired()
-                        .HasColumnType("nvarchar(8)")
-                        .HasMaxLength(8);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("VIP")
                         .HasColumnType("bit");
@@ -133,20 +135,28 @@ namespace Tour_De_France.Migrations
                     b.ToTable("Spisetelte");
                 });
 
-            modelBuilder.Entity("Tour_De_France.Models.TogAfgang", b =>
+            modelBuilder.Entity("Tour_De_France.Models.Togafgang", b =>
                 {
-                    b.Property<int>("Time")
-                        .HasColumnType("int");
+                    b.Property<int>("Tid")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("Departure")
-                        .HasColumnType("int");
+                    b.Property<string>("ArrivalK")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("arrival")
-                        .HasColumnType("int");
+                    b.Property<string>("ArrivalN")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Time");
+                    b.Property<string>("DepartureK")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.ToTable("TogAfgange");
+                    b.Property<string>("DepartureN")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Tid");
+
+                    b.ToTable("Togafgange");
                 });
 
             modelBuilder.Entity("Tour_De_France.Models.Tribune", b =>
@@ -162,7 +172,7 @@ namespace Tour_De_France.Migrations
                     b.ToTable("Tribuner");
                 });
 
-            modelBuilder.Entity("Tour_De_France.Models.VIP", b =>
+            modelBuilder.Entity("Tour_De_France.Models.VIPMenu", b =>
                 {
                     b.Property<string>("Titel")
                         .HasColumnType("nvarchar(450)");

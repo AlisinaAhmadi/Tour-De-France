@@ -12,10 +12,11 @@ namespace Tour_De_France.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(maxLength: 50, nullable: false),
-                    Mobil = table.Column<string>(maxLength: 8, nullable: false),
+                    Name = table.Column<string>(nullable: false),
+                    Mobil = table.Column<string>(nullable: false),
                     Email = table.Column<string>(nullable: false),
-                    VIP = table.Column<bool>(nullable: false)
+                    VIP = table.Column<bool>(nullable: false),
+                    Password = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -81,16 +82,19 @@ namespace Tour_De_France.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "TogAfgange",
+                name: "Togafgange",
                 columns: table => new
                 {
-                    Time = table.Column<int>(nullable: false),
-                    Departure = table.Column<int>(nullable: false),
-                    arrival = table.Column<int>(nullable: false)
+                    Tid = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ArrivalK = table.Column<string>(nullable: true),
+                    DepartureK = table.Column<string>(nullable: true),
+                    ArrivalN = table.Column<string>(nullable: true),
+                    DepartureN = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TogAfgange", x => x.Time);
+                    table.PrimaryKey("PK_Togafgange", x => x.Tid);
                 });
 
             migrationBuilder.CreateTable(
@@ -137,7 +141,7 @@ namespace Tour_De_France.Migrations
                 name: "Spisetelte");
 
             migrationBuilder.DropTable(
-                name: "TogAfgange");
+                name: "Togafgange");
 
             migrationBuilder.DropTable(
                 name: "Tribuner");

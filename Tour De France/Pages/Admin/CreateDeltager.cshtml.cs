@@ -24,6 +24,12 @@ namespace Tour_De_France.Pages.Admin
         [BindProperty, DataType(DataType.Password)]
         public string Password { get; set; }
 
+        [BindProperty]
+        public string Mobil { get; set; }
+
+        [BindProperty]
+        public string Name { get; set; }
+
         public CreateDeltagerModel(DeltagerService deltagerService)
         {
             _deltagerService = deltagerService;
@@ -36,7 +42,7 @@ namespace Tour_De_France.Pages.Admin
             {
                 return Page();
             }
-            await _deltagerService.AddDeltager(new Deltager(Email, passwordHasher.HashPassword(null, Password)));
+            await _deltagerService.AddDeltager(new Deltager(Name, Mobil,Email,passwordHasher.HashPassword(null, Password)));
             return RedirectToPage("/Index");
         }
         public void OnGet()

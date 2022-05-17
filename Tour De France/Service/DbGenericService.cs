@@ -22,7 +22,7 @@ namespace Tour_De_France.Service
 
         public async Task AddObjectAsync(T obj)
         {
-            using (var context = new EventDbContext())
+            await using (var context = new EventDbContext())
             {
                 context.Set<T>().Add(obj);
                 context.SaveChanges();

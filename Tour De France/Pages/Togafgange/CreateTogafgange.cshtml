@@ -2,3 +2,45 @@
 @model Tour_De_France.Pages.Togafgange.CreateTogafgangeModel
 @{
 }
+
+<h1>Lav en ny togafgang</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <h3>Lav en togafgang fra København</h3>
+            <div class="form-group">
+                <label asp-for="@Model.Togafgang.DepartureK" class="control-lable"></label>
+                <input asp-for="@Model.Togafgang.DepartureK" class="form-control"/>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Togafgang.ArrivalK" class="control-lable"></label>
+                <input asp-for="@Model.Togafgang.ArrivalK" class="form-control"/>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <h3>Lav en togafgang fra Næstved</h3>
+            <div class="form-group">
+                <label asp-for="@Model.Togafgang.DepartureN" class="control-lable"></label>
+                <input asp-for="@Model.Togafgang.DepartureN" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Togafgang.ArrivalN" class="control-lable"></label>
+                <input asp-for="@Model.Togafgang.ArrivalN" class="form-control" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<div>
+    <a asp-page="/Togafgange/GetAllTogafgange">Tilbage til togafgangene</a>
+</div>

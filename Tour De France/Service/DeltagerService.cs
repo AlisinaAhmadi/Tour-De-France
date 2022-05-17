@@ -23,5 +23,9 @@ namespace Tour_De_France.Service
             Deltagere.Add(deltager);
             await DbService.AddObjectAsync(deltager);
         }
+        public IEnumerable<Deltager> GetDeltager()
+        {
+            return Deltagere;
+        }
     }
 }
