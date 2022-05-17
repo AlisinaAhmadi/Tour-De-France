@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Tour_De_France.Models
 {
-    public class VIP
+    public class VIPMenu
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
@@ -18,12 +18,12 @@ namespace Tour_De_France.Models
         [Required]
         public double Price { get; set; }
 
-        public VIP()
+        public VIPMenu()
         {
             
         }
 
-        public VIP(string titel, string description, double price)
+        public VIPMenu(string titel, string description, double price)
         {
             Titel = titel;
             Description = description;

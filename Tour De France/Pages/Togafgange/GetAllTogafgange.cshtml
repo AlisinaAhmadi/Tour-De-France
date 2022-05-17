@@ -2,3 +2,54 @@
 @model Tour_De_France.Pages.Togafgange.GetAllTogafgangeModel
 @{
 }
+
+<div>
+    <a data-toggle="tooltip" title="Sort By Arrival" asp-page-handler="SortByArrivalK"><i class="fa fa-angle-up"></i></a>
+    <a data-toggle="tooltip" title="Sort By Arrival Descending" asp-page-handler="SortByArrivalKDescending"><i class="fa fa-angle-down"></i></a>
+</div>
+<div>
+    <table style="position: relative; top: 76px; border-left: 500px">
+        <h2 style="position: relative; top: 76px;">Fra København mod Roskilde</h2>
+        <tbody>
+            @if (@Model.togafgangs != null)
+            {
+                foreach (var togafgang in Model.togafgangs)
+                {
+                    <tr class="btn-secondary">
+                        <td>
+                            @togafgang.DepartureK
+                        </td>
+                        <td style="position: relative; left: 350px;">
+                            @togafgang.ArrivalK
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+    <div>
+        <a data-toggle="tooltip" title="Sort By Arrival" asp-page-handler="SortByArrivalN"><i class="fa fa-angle-up"></i></a>
+        <a data-toggle="tooltip" title="Sort By Arrival Descending" asp-page-handler="SortByArrivalNDescending"><i class="fa fa-angle-down"></i></a>
+    </div>
+    <table >
+        <tbody style="position: relative; left: 500px;">
+        <h2 style="position: relative; left: 500px;">Fra Næstved mod Roskilde</h2>
+        <h4>Afrejse</h4>
+        <h4 style="position: relative; left: 350px;">Ankomst</h4>
+        @if (@Model.togafgangs != null)
+            {
+                foreach (var togafgang in Model.togafgangs)
+                {
+                    <tr class="btn-secondary">
+                        <td>
+                            @togafgang.DepartureN
+                        </td>
+                        <td style="position: relative; left: 350px;">
+                            @togafgang.ArrivalN
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>

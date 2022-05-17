@@ -18,8 +18,8 @@ namespace Tour_De_France.Models
         public DbSet<Musiktelt> Musiktelte { get; set; }
         public DbSet<Parking_plads> ParkingPlads { get; set; }
         public DbSet<Spisetelt> Spisetelte { get; set; }
-        public DbSet<TogAfgang> TogAfgange { get; set; }
+        public DbSet<Togafgang> Togafgange { get; set; }
         public DbSet<Tribune> Tribuner { get; set; }
-        public DbSet<VIP> VIPs { get; set; }
+        public DbSet<VIPMenu> VIPs { get; set; }
     }
 }

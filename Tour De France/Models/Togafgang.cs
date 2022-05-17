@@ -2,31 +2,38 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace Tour_De_France.Models
 {
-    public class TogAfgang
+    public class Togafgang
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         [Key]
-        public int Time { get; set; }
-        [Required]
-        public int Departure { get; set; }
-        [Required]
-        public int arrival { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Tid { get; set; }
+        [AllowNull]
+        public string ArrivalK { get; set; }
+        [AllowNull]
+        public string DepartureK { get; set; }
+        [AllowNull]
+        public string ArrivalN { get; set; }
+        [AllowNull]
+        public string DepartureN { get; set; }
 
-        public TogAfgang()
+        public Togafgang()
         {
             
         }
-
-        public TogAfgang(int time, int departure, int arrival)
+        
+        public Togafgang(string arrivalN, string departureN, string arrivalK, string departureK)
         {
-            Time = time;
-            Departure = departure;
-            this.arrival = arrival;
+            ArrivalN = arrivalN;
+            DepartureN = departureN;
+            ArrivalK = arrivalK;
+            DepartureK = departureK;
         }
+
     }
 }

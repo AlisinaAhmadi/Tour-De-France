@@ -18,7 +18,10 @@ namespace Tour_De_France.Pages.LogIn
     {
         private DeltagerService _deltagerService;
 
-
+        public LogInModel(DeltagerService deltagerService)
+        {
+            _deltagerService = deltagerService;
+        }
 
         [BindProperty]
         public string Email { get; set; }
@@ -33,13 +36,12 @@ namespace Tour_De_France.Pages.LogIn
             {
                 if (Email == deltagers.Email)
                 {
-                    //var passwordHasher = new PasswordHasher<string>();
-                    //if (passwordHasher.VerifyHashedPassword(null, deltagers.Password, Password) == PasswordVerificationResult.Success)
+                    var passwordHasher = new PasswordHasher<string>();
+                    if (passwordHasher.VerifyHashedPassword(null, deltagers.Password, Password) == PasswordVerificationResult.Success)
                     {
-                        //LoggedInUser = user;
                         var claims = new List<Claim>
                         {
-                            new Claim(ClaimTypes.Email, Email)
+                            new Claim(ClaimTypes.Name, Email)
                         };
 
                         if (Email == "admin") claims.Add(new Claim(ClaimTypes.Role, "admin"));

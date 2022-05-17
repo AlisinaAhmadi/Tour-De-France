@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using Tour_De_France.Models
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -9,65 +10,71 @@
     <link rel="stylesheet" href="~/css/EventCss.css" />
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">Tour_De_France</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-page="/Event/GetAllEvents">Events</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-page="/Admin/CreateDeltager">Lav Bruger</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-page="/Musiktelt/GetAllMusiktelts">Musitelts</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-page="/Spisetelt/GetAllSpisetelt">Spisetelt</a>
-                        </li>
-                    </ul>
-                    <ul class="navbar-nav">
-                        @{
-                            if (Context.User.Identity.Name==null)
+<header>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <div class="container">
+            <a class="navbar-brand" asp-area="" asp-page="/Index">Tour_De_France</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                <ul class="navbar-nav flex-grow-1">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area=""asp-page="/Event/GetAllEvents">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area=""asp-page="/Togafgange/GetAllTogafgange">Togafgange</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area=""asp-page="/Admin/CreateDeltager">Lav Bruger</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area=""asp-page="/Togafgange/CreateTogafgange">Lav Togafgang</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    @{
+                        if (Context.User.Identity.Name==null)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-page="/LogIn/LogIn">Login</a>
+                            </li>
+                        }
+                        else
+                        {
+                            if (Context.User.Identity.Name != null)
                             {
-                                <li class="nav-item">
-                                    <a class="nav-link" asp-area="" asp-page="/LogIn/LogIn">Login</a>
+                                <li class="nav-item nav-link mr-3">
+                                    User:  @Context.User.Identity.Name
                                 </li>
                             }
-                            else
-                            {
-                                if (Context.User.Identity.Name != null)
-                                {
-                                    <li class="nav-item nav-link mr-3">
-                                        User:  @Context.User.Identity.Name
-                                    </li>
-                                }
-                                <li class="nav-item">
-                                    <a class="nav-link" asp-area="" asp-page="/LogIn/LogOut">Logout</a>
-                                </li>
-                            } 
-                        }
-                    </ul>
-                </div>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-page="/LogIn/LogOut">Logout</a>
+                            </li>
+                        } 
+                    }
+                </ul>
             </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+        </div>
+    </nav>
+</header>
+<div class="container">
+    <main role="main" class="pb-3">
+        @*@{
+            if (@Model.Deltager.Id > 100)
+            {
+                Console.WriteLine("Der er ikke nok deltager!!!");
+            }
+        }*@
+        @RenderBody()
+    </main>
     </div>
 
     <footer class="border-top footer text-muted">
