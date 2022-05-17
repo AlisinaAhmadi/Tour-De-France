@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Tour_De_France.Interface;
 using Tour_De_France.Models;
 using Tour_De_France.Service;
 
@@ -27,6 +28,8 @@ namespace Tour_De_France
         {
             services.AddRazorPages();
             services.AddSingleton<EventService>();
+            services.AddSingleton<MusikteltService>();
+            services.AddSingleton<SpiseteltService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

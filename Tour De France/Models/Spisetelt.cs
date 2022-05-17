@@ -17,6 +17,12 @@ namespace Tour_De_France.Models
         public string Food { get; set; }
         [Required]
         public string Drinks { get; set; }
+
+        internal void Add(Spisetelt spisetelt)
+        {
+            throw new NotImplementedException();
+        }
+
         [Required]
         public double Price { get; set; }
 

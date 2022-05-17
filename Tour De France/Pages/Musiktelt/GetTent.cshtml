@@ -1,0 +1,48 @@
+﻿@page
+@model Tour_De_France.Pages.Musiktelt.GetMusikteltModel
+@{
+}
+
+<h1> Musiktelt</h1>
+<table class="table table-bordered table-hover table-striped">
+    <thead>
+        <tr>
+            <td>
+                Time
+            </td>
+            <td>
+                Band
+            </td>
+            <td>
+                Drinks
+            </td>
+            <td>
+                Price
+            </td>
+            <td>Sid</td>
+        </tr>
+    </thead>
+    <tbody>
+        @if (@Model.Musiktelts != null)
+{
+            foreach (var Musiktelt in Model.Musiktelts)
+            {
+                <tr>
+                    <td>
+                        @Musiktelt.Time
+                    </td>
+                    <td>
+                        @Musiktelt.Band
+                    </td>
+                    <td>
+                        @Musiktelt.Price
+                    </td>
+                    <td>
+                        @Musiktelt.Sid
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+
+</table>

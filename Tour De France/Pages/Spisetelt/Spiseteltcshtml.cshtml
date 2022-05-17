@@ -1,0 +1,48 @@
+﻿@page
+@using Tour_De_France.Models
+@model Tour_De_France.Pages.Spisetelt.SpiseteltcshtmlModel
+@{
+}
+<h1> Musiktelt</h1>
+<table class="table table-bordered table-hover table-striped">
+    <thead>
+    <tr>
+        <td>
+            Time
+        </td>
+        <td>
+            Food
+        </td>
+        <td>
+            Drinks
+        </td>
+        <td>
+            Price
+        </td>
+        
+    </tr>
+    </thead>
+<tbody>
+@if (@Model.Spisetelts != null)    {
+    foreach (var Spisetelt in Model.Spisetelts)
+    {
+        <tr>
+            <td>
+                @Spisetelt.Time
+            </td>
+            <td>
+                @Spisetelt.Food
+            </td>
+            <td>
+                @Spisetelt.Drinks
+            </td>
+            <td>
+                @Spisetelt.Price
+            </td>
+          
+        </tr>
+    }
+}
+    
+
+</tbody>
