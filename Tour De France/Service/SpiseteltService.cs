@@ -11,17 +11,17 @@ namespace Tour_De_France.Service
 
 
         private List<Spisetelt> spisetelts;
-        private Spisetelt spisetelt;
+        public DbGenericService<Spisetelt> DbService { get; set; }
 
-        public SpiseteltService()
+        public SpiseteltService(DbGenericService<Spisetelt> dbService)
         {
-            spisetelts = MockSpistelt.GetmockSpisetelts();
-
+            DbService = dbService;
+            spisetelts = dbService.GetObjectsAsync().Result.ToList();
         }
         public void AddSpisetelt(Spisetelt spisetelt)
         {
             spisetelts.Add(spisetelt);
-            await DbService.AddObjectAsync(spisetelt);
+            DbService.AddObjectAsync(spisetelt);
         }
 
         public IEnumerable<Spisetelt> GetSpisetelts()

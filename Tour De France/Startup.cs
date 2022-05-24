@@ -37,7 +37,7 @@ namespace Tour_De_France
             services.AddSingleton<MusikteltService, MusikteltService>();
             services.AddSingleton<SpiseteltService, SpiseteltService>();
             services.AddSingleton<ParkeringspladsService, ParkeringspladsService>();
-            services.AddSingleton<TogafgangeService, TogafgangeService>();
+            services.AddSingleton<TogafgangService, TogafgangService>();
             services.AddSingleton<TribuneService,TribuneService>();
             services.AddSingleton<VIPService, VIPService>();
             services.AddTransient<DbGenericService<Togafgang>,DbGenericService<Togafgang>>();

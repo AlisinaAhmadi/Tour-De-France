@@ -13,8 +13,6 @@ namespace Tour_De_France.Service
 
         public DbGenericService<Musiktelt> DbService { get; set; }
 
-        //public object MockData { get; }
-
         public MusikteltService(DbGenericService<Musiktelt> dbService)
         {
             DbService = dbService;
