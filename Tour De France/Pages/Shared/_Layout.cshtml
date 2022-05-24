@@ -28,11 +28,17 @@
                     <li class="nav-item">
                         <a class="nav-link" asp-area=""asp-page="/Tribune/GetTribune">Tribune</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area=""asp-page="/Spisetelt/GetAllSpisetelt">Spisetelt</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area=""asp-page="/Musiktelt/GetAllMusiktelt">Musiktelt</a>
+                    </li>
                     @{
                         if (Context.User.Identity.Name != null)
                         {
                             <li class="nav-item">
-                                <a class="nav-link" asp-area=""asp-page="/Parkeringsplads/GetParkeringspladser">Parkering</a>
+                                <a class="nav-link" asp-area=""asp-page="/Parkeringsplads/Parkeringspladsinfo">Parkering</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" asp-area=""asp-page="/VIP/VIPOgMenu">VIP</a>

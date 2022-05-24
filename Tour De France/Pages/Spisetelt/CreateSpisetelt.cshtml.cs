@@ -34,7 +34,7 @@ namespace Tour_De_France.Pages.Spisetelt
                 return Page();
             }
 
-            await spiseteltService.AddSpisetelt(Spisetelt);
+            spiseteltService.AddSpisetelt(Spisetelt);
             return RedirectToPage("GetAllSpisetelt");
         }
     }
