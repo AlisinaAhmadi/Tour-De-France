@@ -11,10 +11,10 @@ namespace Tour_De_France.Pages.Togafgange
 {
     public class DeleteTogafgangeModel : PageModel
     {
-        private TogafgangeService _togafgangeService;
+        private TogafgangService _togafgangeService;
         [BindProperty] public Togafgang Togafgang { get; set; }
 
-        public DeleteTogafgangeModel(TogafgangeService togafgangeService)
+        public DeleteTogafgangeModel(TogafgangService togafgangeService)
         {
             _togafgangeService = togafgangeService;
         }
