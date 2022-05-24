@@ -1,4 +1,39 @@
-﻿@page
+﻿@page "{id:int}"
 @model Tour_De_France.Pages.Event.EditEventModel
 @{
 }
+<h1>Edit Event</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div class="form-group">
+                <label asp-for="@Model.Event.Titel" class="control-lable"></label>
+                <input asp-for="@Model.Event.Titel" class="form-control" />
+                <span asp-validation-for="Event.Titel" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Event.Description" class="control-lable"></label>
+                <input asp-for="@Model.Event.Description" class="form-control" />
+                <span asp-validation-for="Event.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Event.Time" class="control-lable"></label>
+                <input asp-for="@Model.Event.Time" class="form-control" />
+                <span asp-validation-for="Event.Time" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Event.Address" class="control-lable"></label>
+                <input asp-for="@Model.Event.Address" class="form-control" />
+                <span asp-validation-for="Event.Address" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Update" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<div>
+    <a asp-page="/Index">Tilbage til forsiden</a>
+</div>

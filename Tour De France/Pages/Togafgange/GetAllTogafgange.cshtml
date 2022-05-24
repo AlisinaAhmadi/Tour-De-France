@@ -2,14 +2,127 @@
 @model Tour_De_France.Pages.Togafgange.GetAllTogafgangeModel
 @{
 }
+<header style="text-align: center;">
+    <h1 style="text-size-adjust: 150%; color: black;"><strong>Togafgange</strong></h1>
+    <h3 style="color: black;"> <strong>Her kan du se togafgange fra københavn og næstved</strong></h3>
+    
+ 
+</header>
 
-<div>
-    <a data-toggle="tooltip" title="Sort By Arrival" asp-page-handler="SortByArrivalK"><i class="fa fa-angle-up"></i></a>
-    <a data-toggle="tooltip" title="Sort By Arrival Descending" asp-page-handler="SortByArrivalKDescending"><i class="fa fa-angle-down"></i></a>
+<body class="zealand">
+    <h4>København</h4>
+</body>
+<br />
+<div class="table" style="size: 200px;">
+    <table class="table table-bordered table-striped table-dark" width="30%">
+        <col style="width: 20%">
+        <col style="width: 20%">
+        <col style="width: 8%">
+
+
+        <thead>
+        <tr class="btn-secondary active">
+            <th>
+                <div class="d-flex justify-content-between p-0">
+                    <div><h5>Afgang </h5></div>
+                    <div>
+                        <a  style="color: gold"data-toggle="tooltip" title="Sorter efter Afgang" asp-page-handler="SortByDeparture"><i class="fa fa-angle-up"></i></a>
+                        <a style="color: gold" data-toggle="tooltip" title="Sorter efter Afgang descending" asp-page-handler="SortByDepartureDescending"><i class="fa fa-angle-down"></i></a>
+                    </div>
+                </div>
+            </th>
+            <th>
+                <div class="d-flex justify-content-between p-0">
+                    <div>
+                        <h5>Ankomst</h5>
+                    </div>
+                    <div>
+                        <a style="color: gold" data-toggle="tooltip" title="Sorter efter Ankomst" asp-page-handler="SortByArrival"><i class="fa fa-angle-up"></i></a>
+                        <a style="color: gold" data-toggle="tooltip" title="Sorter efter ankomst Descending" asp-page-handler="SortByArrivalDescending"><i class="fa fa-angle-down"></i></a>
+                    </div>
+                </div>
+            </th>
+            <th>
+                <div class="d-flex justify-content-between p-0">
+                    <div>
+                        <h5>Admin controls</h5>
+                    </div>
+                </div>
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        @if (@Model.togafgangs != null)
+        {
+            foreach (var togafgang in Model.togafgangs)
+            {
+                <tr class="btn-secondary">
+                    <td>
+                        @togafgang.Departure
+                    </td>
+                    <td>
+                        @togafgang.Arrival
+                    </td>
+                    <td>
+                    @{
+                        if (Model.User.Identity.Name == "admin")
+                        {
+                            <ul class="list-inline m-0">
+                                <li class="list-inline-item">
+                                    <a class="btn btn-primary btn-sm" type="button" data-toggle="tooltip" title="Edit" asp-page="EditTogafgange" asp-route-id="@togafgang.TogafgangId"><i class="fa fa-edit"></i></a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a class="btn btn-danger btn-sm " type="button" data-toggle="tooltip" data-placement="top" title="Delete" asp-page="DeleteTogafgange" asp-route-id="@togafgang.TogafgangId"><i class="fa fa-trash"></i></a>
+                                </li>
+                            </ul>
+                        }
+                    }
+                    </td>
+                </tr>
+            }
+        }
+        </tbody>
+    </table>
 </div>
-<div>
-    <table style="position: relative; top: 76px; border-left: 500px">
-        <h2 style="position: relative; top: 76px;">Fra København mod Roskilde</h2>
+<h4>Næstved</h4>
+<div class="table">
+    <table class="table table-bordered table-striped table-dark" width="60%">
+        <col style="width: 20%">
+        <col style="width: 20%">
+        <col style="width: 8%">
+
+
+        <thead>
+            <tr class="btn-secondary active">
+              <th>
+                    <div class="d-flex justify-content-between p-0">
+                        <div><h5>Afgang </h5></div>
+                        <div>
+                            <a  style="color: gold"data-toggle="tooltip" title="Sorer efter Afgang" asp-page-handler="SortByDeparture"><i class="fa fa-angle-up"></i></a>
+                            <a style="color: gold" data-toggle="tooltip" title="Sorter efter Afgang descending" asp-page-handler="SortByDepartureDescending"><i class="fa fa-angle-down"></i></a>
+                        </div>
+                    </div>
+                </th>
+                <th>
+                    <div class="d-flex justify-content-between p-0">
+                        <div>
+                            <h5>Ankomst</h5>
+                        </div>
+                        <div>
+                            <a  style="color: gold"data-toggle="tooltip" title="Sorter efter Ankomst" asp-page-handler="SortByArrival"><i class="fa fa-angle-up"></i></a>
+                            <a style="color: gold" data-toggle="tooltip" title="Sorter efter Ankomst descending" asp-page-handler="SortByArrivalDescending"><i class="fa fa-angle-down"></i></a>
+                        </div>
+                    </div>
+                </th>
+                <th>
+                    <div class="d-flex justify-content-between p-0">
+                        <div>
+                            <h5>Admin controls</h5>
+                        </div>
+                    </div>
+                </th>
+            </tr>
+        </thead>
         <tbody>
             @if (@Model.togafgangs != null)
             {
@@ -17,35 +130,26 @@
                 {
                     <tr class="btn-secondary">
                         <td>
-                            @togafgang.DepartureK
+                            @togafgang.Departure
                         </td>
-                        <td style="position: relative; left: 350px;">
-                            @togafgang.ArrivalK
-                        </td>
-                    </tr>
-                }
-            }
-        </tbody>
-    </table>
-    <div>
-        <a data-toggle="tooltip" title="Sort By Arrival" asp-page-handler="SortByArrivalN"><i class="fa fa-angle-up"></i></a>
-        <a data-toggle="tooltip" title="Sort By Arrival Descending" asp-page-handler="SortByArrivalNDescending"><i class="fa fa-angle-down"></i></a>
-    </div>
-    <table >
-        <tbody style="position: relative; left: 500px;">
-        <h2 style="position: relative; left: 500px;">Fra Næstved mod Roskilde</h2>
-        <h4>Afrejse</h4>
-        <h4 style="position: relative; left: 350px;">Ankomst</h4>
-        @if (@Model.togafgangs != null)
-            {
-                foreach (var togafgang in Model.togafgangs)
-                {
-                    <tr class="btn-secondary">
                         <td>
-                            @togafgang.DepartureN
+                            @togafgang.Arrival
                         </td>
-                        <td style="position: relative; left: 350px;">
-                            @togafgang.ArrivalN
+                        <td>
+                            @{
+                                if (Model.User.Identity.Name == "admin")
+                                {
+                                    <ul class="list-inline m-0">
+                                        <li class="list-inline-item">
+                                            <a class="btn btn-primary btn-sm" type="button" data-toggle="tooltip" title="Edit" asp-page="EditTogafgange" asp-route-id="@togafgang.TogafgangId"><i class="fa fa-edit"></i></a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a class="btn btn-danger btn-sm " type="button" data-toggle="tooltip" data-placement="top" title="Delete" asp-page="DeleteTogafgange" asp-route-id="@togafgang.TogafgangId"><i class="fa fa-trash"></i></a>
+                                        </li>
+                                    </ul>
+                                }
+                            }
+                          
                         </td>
                     </tr>
                 }
@@ -53,3 +157,12 @@
         </tbody>
     </table>
 </div>
+<br />
+@{
+    if (Model.User.Identity.Name == "admin")
+    {
+        <p>
+            <a class="btn btn-primary" data-toggle="tooltip" title="Lav togafgang" asp-page="CreateTogafgange"><i class="fa fa-plus-square mr-1"></i> Lav togafgange </a>
+        </p>
+    }
+}

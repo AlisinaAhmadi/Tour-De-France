@@ -1,0 +1,13 @@
+﻿@page "{id:int}"
+@model Tour_De_France.Pages.Tribune.DeleteTribuneModel
+@{
+}
+<h1>Bekræft at du vil slette dette tribune event></h1>
+<div class="alert alert-danger">
+    <h5>Du er igang med at slette tribunen i tiden @Model.Tribune.Time</h5>
+    <h5>Sikker på at du vil slette det? - @Model.Tribune.TribuneId</h5>
+    <form method="post">
+        <button type="submit" class="btn btn-danger">Yes</button>
+        <a class="btn btn-primary" asp-page="/Tribune/GetTribune">No</a>
+    </form>
+</div>

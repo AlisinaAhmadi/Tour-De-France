@@ -11,28 +11,27 @@ namespace Tour_De_France.Models
     public class Togafgang
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Tid { get; set; }
-        [AllowNull]
-        public string ArrivalK { get; set; }
-        [AllowNull]
-        public string DepartureK { get; set; }
-        [AllowNull]
-        public string ArrivalN { get; set; }
-        [AllowNull]
-        public string DepartureN { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int TogafgangId { get; set; }
+        [Required(ErrorMessage = "Feltet må ikke være tomt!")]
+        [DisplayFormat(DataFormatString = "{dd-mm-yyyy}")]
+        public DateTime Arrival { get; set; }
+        [Required(ErrorMessage = "Feltet må ikke være tomt!")]
+        [DisplayFormat(DataFormatString = "{dd-mm-yyyy}")]
+        public DateTime Departure { get; set; }
+   
+      
 
         public Togafgang()
         {
             
         }
         
-        public Togafgang(string arrivalN, string departureN, string arrivalK, string departureK)
+        public Togafgang(int togafgangId, DateTime arrival, DateTime departure)
         {
-            ArrivalN = arrivalN;
-            DepartureN = departureN;
-            ArrivalK = arrivalK;
-            DepartureK = departureK;
+            TogafgangId = togafgangId;
+            Arrival = arrival;
+            Departure = departure;
         }
 
     }

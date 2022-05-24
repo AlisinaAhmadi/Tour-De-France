@@ -1,0 +1,27 @@
+﻿@page
+@model Tour_De_France.Pages.Event.TilmeldModel
+@{
+}
+<h1>Event Tilmeldelse</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <div>
+            Deltagers Navn: @Model.Deltager.Name med id: @Model.Deltager.DeltagerId
+            <span asp-validation-for="EventOrder.DeltagerId"></span>
+        </div>
+        <div>
+            Event: @Model.Event.Titel
+        </div>
+        <form method="post">
+            Vil du gerne deltage?: 
+            <input asp-for="@Model.Count" class="form-control" />
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<div>
+    <a asp-page="/Event/TilmeldeseKvittering"></a>
+</div>

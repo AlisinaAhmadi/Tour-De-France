@@ -13,10 +13,8 @@ namespace Tour_De_France.Pages.Togafgange
     {
         private TogafgangService togafgangeService;
         public List<Models.Togafgang> togafgangs { get; private set; }
-        [BindProperty] public string ArrivalK { get; set; }
-        [BindProperty] public string DepartureK { get; set; }
-        [BindProperty] public string ArrivalN { get; set; }
-        [BindProperty] public string DepartureN { get; set; }
+        [BindProperty] public string Arrival { get; set; }
+        [BindProperty] public string Departure { get; set; }
 
 
         public GetAllTogafgangeModel(TogafgangService togafgangeService)
@@ -30,27 +28,27 @@ namespace Tour_De_France.Pages.Togafgange
             return Page();
         }
 
-        public IActionResult OnGetSortByArrivalK()
+        public IActionResult OnGetSortByArrival()
         {
-            togafgangs = togafgangeService.SortByArrivalK().ToList();
+            togafgangs = togafgangeService.SortByArrival().ToList();
             return Page();
         }
 
-        public IActionResult OnGetSortByArrivalKDescending()
+        public IActionResult OnGetSortByArrivalDescending()
         {
-            togafgangs = togafgangeService.SortByArrivalKDescending().ToList();
+            togafgangs = togafgangeService.SortByArrivalDescending().ToList();
             return Page();
         }
 
-        public IActionResult OnGetSortByArrivalN()
+        public IActionResult OnGetSortByDeparture()
         {
-            togafgangs = togafgangeService.SortByArrivalN().ToList();
+            togafgangs = togafgangeService.SortByDeparture().ToList();
             return Page();
         }
 
-        public IActionResult OnGetSortByArrivalNDescending()
+        public IActionResult OnGetSortByDepartureDescending()
         {
-            togafgangs = togafgangeService.SortByArrivalNDescending().ToList();
+            togafgangs = togafgangeService.SortByDepartureDescending().ToList();
             return Page();
         }
     }

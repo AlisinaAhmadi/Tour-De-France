@@ -2,19 +2,16 @@
 @model Tour_De_France.Pages.LogIn.LogInModel
 @{
 }
-<div class="container">
-    <div>
-        @Model.Message
-    </div>
+<div class="container zealand">
     <form method="post">
         <div class="form-group">
-            <label asp-for="Email" class="col-form-label "></label>
+            <p>Navn</p>
             <div>
-                <input asp-for="Email" />
+                <input asp-for="Name" />
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="Password" class="col-form-label"></label>
+            <p>Kodeord</p>
             <div>
                 <input asp-for="Password" />
             </div>
@@ -22,5 +19,8 @@
         <div class="form-group">
             <button class="btn btn-primary">Log in</button>
         </div>
+        <div style="color: red;">
+                @Model.Message
+            </div>
     </form>
 </div>

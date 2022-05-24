@@ -1,0 +1,113 @@
+﻿@page "/"
+@model Tour_De_France.Pages.Event.GetEventModel
+@{
+}
+<header style="text-align: center;">
+    <h1 style="text-size-adjust: 150%; color: black;"><strong>Event</strong></h1>
+    <h5 style="color: black;"><strong>Tour De France kommer til Roskilde! Kom og hyg med os!</strong></h5>
+</header>
+
+<body class="zealand">
+</body>
+
+<br />
+<div class="table">
+    <table class="table table-bordered table-striped table-dark" width="60%">
+        <col style="width: 15%">
+        <col style="width: 65%">
+        <col style="width: 15%">
+        <col style="width: 10%">
+        <col style="width: 10%">
+        <thead>
+            <tr class="btn-secondary active">
+                <th>
+                    <div class="d-flex justify-content-between p-0">
+                        <div><h5> Titel </h5></div>
+                    </div>
+                </th>
+                <th>
+                    <div class="d-flex justify-content-between p-0">
+                        <div><h5>Beskrivelse </h5></div>
+                    </div>
+                </th>
+                <th>
+                    <div class="d-flex justify-content-between p-0">
+                        <div>
+                            <h5>Dato og tid </h5>
+                        </div>
+                    </div>
+                </th>
+                <th>
+                    <div class="d-flex justify-content-between p-0">
+                        <div>
+                            <h5>Addresse </h5>
+                        </div>
+                    </div>
+                </th>
+                <th>
+                    <div class="d-flex justify-content-between p-0">
+                        <div>
+                            <h5>Tilmeld dig her </h5>
+                        </div>
+                    </div>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (@Model.Events != null)
+            {
+                foreach (var eEvent in Model.Events)
+                {
+                    <tr class="btn-secondary">
+                        <td>
+                            @eEvent.Titel
+                        </td>
+                        <td>
+                            @eEvent.Description
+                        </td>
+                        <td>
+                            @eEvent.Time
+                        </td>
+                        <td>
+                            @eEvent.Address
+                        </td>
+                        <td>
+                            <ul class="list-inline m-0">
+                                @{
+                                    if (Model.User.Identity.Name == "admin")
+                                    {
+                                        <li class="list-inline-item">
+                                            <a class="btn btn-primary btn-sm" type="button" data-toggle="tooltip" title="Edit Event" asp-page="/Event/EditEvent" asp-route-id="@eEvent.EventId"><i class="fa fa-edit"></i></a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a class="btn btn-danger btn-sm " type="button" data-toggle="tooltip" data-placement="top" title="Delete Event" asp-page="/Event/DeleteEvent" asp-route-id="@eEvent.EventId"><i class="fa fa-trash"></i></a>
+                                        </li>
+                                    }
+                                }
+                                @{
+                                    if (Model.User.Identity.Name != null)
+                                    {
+                                    <li class="list-inline-item">
+                                    <a class="btn btn-danger btn-sm " type="button" data-toggle="tooltip" data-placement="top" title="Tilmeldese" asp-page="/Event/Tilmeld" asp-route-id="@eEvent.EventId"><i class="fa fa-plus-square"></i></a>
+                                    </li>
+                                    }
+                                }
+                            </ul>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+<br />
+@{
+    if (Model.User.Identity.Name == "admin")
+    {
+        <p>
+            <a class="btn btn-primary" data-toggle="tooltip" title="Add Event" asp-page="CreateEvent"><i class="fa fa-plus-square mr-1"></i> Lav Event </a>
+        </p>
+    }
+
+}
+<br />

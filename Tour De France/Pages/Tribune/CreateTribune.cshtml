@@ -1,0 +1,28 @@
+﻿@page
+@model Tour_De_France.Pages.Tribune.CreateTribuneModel
+@{
+}
+<h1>Lav et nyt tribune event</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div class="form-group">
+                <label asp-for="@Model.Tribune.TribuneId" class="control-lable"></label>
+                <input asp-for="@Model.Tribune.TribuneId" class="form-control" />
+                <span asp-validation-for="Tribune.TribuneId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Tribune.Time" class="control-lable"></label>
+                <input asp-for="@Model.Tribune.Time" class="form-control" />
+                <span asp-validation-for="Tribune.Time" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<div>
+    <a asp-page="/Item/GetAllItems">Back to List</a>
+</div>

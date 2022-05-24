@@ -1,0 +1,49 @@
+﻿@page
+@model Tour_De_France.Pages.Tribune.GetTribuneModel
+@{
+}
+<header>
+    <h1 style="text-align: center; color: black;"><strong>Tribunen!</strong></h1>
+    <h2 style="text-align: center; color: black;"><strong>Her ser du hvornår tribunen åbner og hvad der kommer til at foregå.</strong></h2>
+</header>
+<body class="tribune">
+</body>
+<tbody style="text-align: center;">
+    @if (@Model.Tribunes != null)
+    {
+        foreach (var tribune in Model.Tribunes)
+        {
+            <tr class="btn-secondary">
+                <td>
+                    <p style="color: black; text-outline: 50px orange; "><strong>Tribunen åbner @tribune.Time og vi glæder meget til at se jer i dette tidsrum! Ps. i tidsrummet hvor tribunen er åben kommer musikteltet ikke til at være åben</strong></p> 
+                </td>
+                <td>
+                    @{
+                        if (Model.User.Identity.Name == "admin")
+                        {
+                            <ul class="list-inline m-0">
+                                <li class="list-inline-item">
+                                    <a class="btn btn-primary btn-sm" type="button" data-toggle="tooltip" title="Edit" asp-page="EditTribune" asp-route-id="@tribune.TribuneId"><i class="fa fa-edit"></i></a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a class="btn btn-danger btn-sm " type="button" data-toggle="tooltip" data-placement="top" title="Delete" asp-page="DeleteTribune" asp-route-id="@tribune.TribuneId"><i class="fa fa-trash"></i></a>
+                                </li>
+                            </ul>
+                        }
+                    }
+                </td>
+            </tr>
+        }
+    }
+</tbody>
+<br />
+@{
+    if (Model.User.Identity.Name == "admin")
+    {
+        <p>
+            <a class="btn btn-primary" data-toggle="tooltip" title="Lav tribune" asp-page="CreateTribune"><i class="fa fa-plus-square mr-1"></i> Lav tribune </a>
+        </p>
+        <br />
+    }
+}
+

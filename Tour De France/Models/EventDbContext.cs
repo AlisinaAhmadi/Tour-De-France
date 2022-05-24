@@ -20,6 +20,8 @@ namespace Tour_De_France.Models
         public DbSet<Spisetelt> Spisetelte { get; set; }
         public DbSet<Togafgang> Togafgange { get; set; }
         public DbSet<Tribune> Tribuner { get; set; }
-        public DbSet<VIPMenu> VIPs { get; set; }
+        public DbSet<VIP> VIPs { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<EventOrder> EventOrders { get; set; }
     }
 }

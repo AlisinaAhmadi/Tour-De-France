@@ -21,7 +21,7 @@ namespace Tour_De_France.Migrations
 
             modelBuilder.Entity("Tour_De_France.Models.Deltager", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("DeltagerId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -45,35 +45,59 @@ namespace Tour_De_France.Migrations
                     b.Property<bool>("VIP")
                         .HasColumnType("bit");
 
-                    b.HasKey("Id");
+                    b.HasKey("DeltagerId");
 
                     b.ToTable("Deltagere");
                 });
 
             modelBuilder.Entity("Tour_De_France.Models.Event", b =>
                 {
-                    b.Property<int>("Time")
+                    b.Property<int>("EventId")
                         .HasColumnType("int");
 
                     b.Property<string>("Address")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Eid")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Email")
+                    b.Property<string>("Description")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Mobil")
-                        .HasColumnType("int");
+                    b.Property<DateTime>("Time")
+                        .HasColumnType("datetime2");
 
-                    b.Property<int>("People")
-                        .HasColumnType("int");
+                    b.Property<string>("Titel")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Time");
+                    b.HasKey("EventId");
 
                     b.ToTable("Events");
+                });
+
+            modelBuilder.Entity("Tour_De_France.Models.EventOrder", b =>
+                {
+                    b.Property<int>("EventOrderId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Count")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DeltagerId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("EventId")
+                        .HasColumnType("int");
+
+                    b.HasKey("EventOrderId");
+
+                    b.HasIndex("DeltagerId");
+
+                    b.HasIndex("EventId");
+
+                    b.ToTable("EventOrders");
                 });
 
             modelBuilder.Entity("Tour_De_France.Models.Musiktelt", b =>
@@ -98,6 +122,31 @@ namespace Tour_De_France.Migrations
                     b.HasKey("Mid");
 
                     b.ToTable("Musiktelte");
+                });
+
+            modelBuilder.Entity("Tour_De_France.Models.Order", b =>
+                {
+                    b.Property<int>("OrderId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Count")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DeltagerId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("VIPId")
+                        .HasColumnType("int");
+
+                    b.HasKey("OrderId");
+
+                    b.HasIndex("DeltagerId");
+
+                    b.HasIndex("VIPId");
+
+                    b.ToTable("Orders");
                 });
 
             modelBuilder.Entity("Tour_De_France.Models.Parking_plads", b =>
@@ -141,45 +190,40 @@ namespace Tour_De_France.Migrations
 
             modelBuilder.Entity("Tour_De_France.Models.Togafgang", b =>
                 {
-                    b.Property<int>("Tid")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<int>("TogafgangId")
+                        .HasColumnType("int");
 
-                    b.Property<string>("ArrivalK")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime>("Arrival")
+                        .HasColumnType("datetime2");
 
-                    b.Property<string>("ArrivalN")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime>("Departure")
+                        .HasColumnType("datetime2");
 
-                    b.Property<string>("DepartureK")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("DepartureN")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Tid");
+                    b.HasKey("TogafgangId");
 
                     b.ToTable("Togafgange");
                 });
 
             modelBuilder.Entity("Tour_De_France.Models.Tribune", b =>
                 {
-                    b.Property<int>("Tid")
+                    b.Property<int>("TribuneId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Time")
-                        .HasColumnType("int");
+                    b.Property<DateTime>("Time")
+                        .HasColumnType("datetime2");
 
-                    b.HasKey("Tid");
+                    b.HasKey("TribuneId");
 
                     b.ToTable("Tribuner");
                 });
 
-            modelBuilder.Entity("Tour_De_France.Models.VIPMenu", b =>
+            modelBuilder.Entity("Tour_De_France.Models.VIP", b =>
                 {
-                    b.Property<string>("Titel")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("VIPId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("Champagne")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -188,9 +232,43 @@ namespace Tour_De_France.Migrations
                     b.Property<double>("Price")
                         .HasColumnType("float");
 
-                    b.HasKey("Titel");
+                    b.Property<string>("Titel")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("VIPId");
 
                     b.ToTable("VIPs");
+                });
+
+            modelBuilder.Entity("Tour_De_France.Models.EventOrder", b =>
+                {
+                    b.HasOne("Tour_De_France.Models.Deltager", "Deltager")
+                        .WithMany("EventOrders")
+                        .HasForeignKey("DeltagerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Tour_De_France.Models.Event", "Event")
+                        .WithMany()
+                        .HasForeignKey("EventId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Tour_De_France.Models.Order", b =>
+                {
+                    b.HasOne("Tour_De_France.Models.Deltager", "Deltager")
+                        .WithMany("Orders")
+                        .HasForeignKey("DeltagerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Tour_De_France.Models.VIP", "VIP")
+                        .WithMany()
+                        .HasForeignKey("VIPId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }
