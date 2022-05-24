@@ -11,7 +11,7 @@ namespace Tour_De_France.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int Sid { get; set; }
+        public int Mid { get; set; }
         [Required]
         public int Time { get; set; }
         [Required]

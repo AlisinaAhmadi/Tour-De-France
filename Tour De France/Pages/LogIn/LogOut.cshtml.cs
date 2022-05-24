@@ -14,7 +14,7 @@ namespace Tour_De_France.Pages.LogIn
         public async Task<IActionResult> OnGet()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-            return RedirectToPage("/index");
+            return RedirectToPage("/Event/GetEvent");
         }
     }
 }

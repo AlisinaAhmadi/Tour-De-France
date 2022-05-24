@@ -31,21 +31,30 @@ namespace Tour_De_France
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
-            services.AddSingleton<EventService>();
             services.AddDbContext<EventDbContext>();
             services.AddSingleton<DeltagerService, DeltagerService>();
             services.AddSingleton<EventService, EventService>();
             services.AddSingleton<MusikteltService, MusikteltService>();
+            services.AddSingleton<SpiseteltService, SpiseteltService>();
             services.AddSingleton<ParkeringspladsService, ParkeringspladsService>();
             services.AddSingleton<TogafgangeService, TogafgangeService>();
             services.AddSingleton<TribuneService,TribuneService>();
             services.AddSingleton<VIPService, VIPService>();
             services.AddTransient<DbGenericService<Togafgang>,DbGenericService<Togafgang>>();
-            services.AddTransient<DbGenericService<Deltager>,DbGenericService<Deltager>>();
-
+            services.AddTransient<DbGenericService<VIP>,DbGenericService<VIP>>();
+            services.AddTransient<DbGenericService<Order>,DbGenericService<Order>>();
+            services.AddTransient<DbGenericService<EventOrder>,DbGenericService<EventOrder>>();
+            services.AddTransient<DbGenericService<Tribune>,DbGenericService<Tribune>>();
+            services.AddTransient<DbGenericService<Event>,DbGenericService<Event>>();
+            services.AddTransient<DbGenericService<Parking_plads>,DbGenericService<Parking_plads>>();
+            services.AddTransient<DbGenericService<Spisetelt>,DbGenericService<Spisetelt>>();
+            services.AddTransient<DbGenericService<Musiktelt>,DbGenericService<Musiktelt>>();
+            services.AddSingleton<OrderService, OrderService>();
+            services.AddSingleton<EventOrderService, EventOrderService>();
+            services.AddTransient<DeltagerDbService, DeltagerDbService>();
             services.Configure<CookiePolicyOptions>(options =>
             {
-                // This lambda determines whether user consent for non-essential cookies is needed for a given request. 
+                
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
@@ -65,7 +74,7 @@ namespace Tour_De_France
 
             services.AddMvc().AddRazorPagesOptions(options =>
             {
-                options.Conventions.AuthorizeFolder("/Event");
+                options.Conventions.AuthorizeFolder("/Home");
             }).SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
         }
 

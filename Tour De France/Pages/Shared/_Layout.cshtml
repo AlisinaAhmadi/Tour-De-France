@@ -5,15 +5,17 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Tour_De_France</title>
+    <link rel="stylesheet" href="~/css/EventCss.css" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
-    <link rel="stylesheet" href="~/css/EventCss.css" />
+    @*<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.2.1/slate/bootstrap.min.css">*@
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 </head>
 <body>
 <header>
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
         <div class="container">
-            <a class="navbar-brand" asp-area="" asp-page="/Index">Tour_De_France</a>
+            <a class="navbar-brand" asp-area="" asp-page="/Event/GetEvent"> <img src="Images/zealand logo.jpg"/></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -21,27 +23,34 @@
             <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                 <ul class="navbar-nav flex-grow-1">
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-area=""asp-page="/Event/GetAllEvents">Events</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" asp-area=""asp-page="/Togafgange/GetAllTogafgange">Togafgange</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" asp-area=""asp-page="/Admin/CreateDeltager">Lav Bruger</a>
+                        <a class="nav-link" asp-area=""asp-page="/Tribune/GetTribune">Tribune</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-area=""asp-page="/Togafgange/CreateTogafgange">Lav Togafgang</a>
-                    </li>
+                    @{
+                        if (Context.User.Identity.Name != null)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area=""asp-page="/Parkeringsplads/GetParkeringspladser">Parkering</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area=""asp-page="/VIP/VIPOgMenu">VIP</a>
+                            </li>
+                        }
+                    }
+                    @*@{
+                        if (Context.User.Identity.Name == "admin")
+                        {*@
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area=""asp-page="/Admin/CreateDeltager">Lav Bruger</a>
+                            </li>
+                        @*}
+                    }*@
                 </ul>
                 <ul class="navbar-nav">
                     @{
-                        if (Context.User.Identity.Name==null)
+                        if (Context.User.Identity.Name == null)
                         {
                             <li class="nav-item">
                                 <a class="nav-link" asp-area="" asp-page="/LogIn/LogIn">Login</a>
@@ -51,6 +60,15 @@
                         {
                             if (Context.User.Identity.Name != null)
                             {
+                                @*<li class="nav-item">
+                                    <a class="nav-link" asp-area="" asp-page="/Deltager/Konto">Konto</a>
+                                </li>*@
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="" asp-page="/VIP/VIPKvittering">Min VIP</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="" asp-page="/Event/EventKvittering">Mine Events</a>
+                                </li>
                                 <li class="nav-item nav-link mr-3">
                                     User:  @Context.User.Identity.Name
                                 </li>
@@ -58,7 +76,7 @@
                             <li class="nav-item">
                                 <a class="nav-link" asp-area="" asp-page="/LogIn/LogOut">Logout</a>
                             </li>
-                        } 
+                        }
                     }
                 </ul>
             </div>
@@ -67,12 +85,6 @@
 </header>
 <div class="container">
     <main role="main" class="pb-3">
-        @*@{
-            if (@Model.Deltager.Id > 100)
-            {
-                Console.WriteLine("Der er ikke nok deltager!!!");
-            }
-        }*@
         @RenderBody()
     </main>
     </div>

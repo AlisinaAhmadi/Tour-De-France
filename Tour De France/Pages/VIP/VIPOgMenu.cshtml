@@ -1,0 +1,115 @@
+﻿@page
+@using Tour_De_France.Models
+@model Tour_De_France.Pages.VIP.VIPModel
+@{
+}
+<header style="text-align: center;">
+    <h1 style="text-size-adjust: 150%; color: black;"><strong>VIP</strong></h1>
+    <h5 style="color: black;"> <strong>VIP-loungen ligger på 2.sal i bygning a, hvor man kan nyde de ekstra menuer sammen med de andre VIPs. Du skal vælge mellem menuerne nedenunder, hvor de kan tilkøbe den lækre champagne menu til din veganske menu eller normale menu!</strong></h5>
+</header>
+
+<body class="vip">
+<h5>Vælg menu</h5>
+</body>
+
+<br />
+<div class="table">
+    <table class="table table-bordered table-striped table-dark" width="60%">
+        <col style="width: 7%">
+        <col style="width: 7%">
+        <col style="width: 74%">
+        <col style="width: 10%">
+        <col style="width: 9%">
+        <thead>
+            <tr class="btn-secondary active">
+                <th>
+                    <div class="d-flex justify-content-between p-0">
+                        <div><h5> Nr </h5></div>
+                    </div>
+                </th>  <th>
+                    <div class="d-flex justify-content-between p-0">
+                        <div><h5>Titel </h5></div>
+                    </div>
+                </th>
+                <th>
+                    <div class="d-flex justify-content-between p-0">
+                        <div>
+                            <h5>Beskrivelse </h5>
+                        </div>
+                    </div>
+                </th>
+                <th>
+                    <div class="d-flex justify-content-between p-0">
+                        <div>
+                            <h5>Pris </h5>
+                        </div>
+                    </div>
+                </th>
+                <th>
+                    <div class="d-flex justify-content-between p-0">
+                        <div>
+                            <h5>Køb</h5>
+                        </div>
+                    </div>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (@Model.Vips != null)
+            {
+                foreach (var vip in Model.Vips)
+                {
+                    <tr class="btn-secondary">
+                        <td>
+                            @vip.VIPId
+                        </td> 
+                        <td>
+                            @vip.Titel
+                        </td>
+                        <td>
+                            @vip.Description
+                        </td>
+                        <td>
+                            @vip.Price
+                        </td>
+                        <td>
+                            <ul class="list-inline m-0">
+                                @{
+                                    if (Model.User.Identity.Name == "admin")
+                                    {
+                                        <li class="list-inline-item">
+                                            <a class="btn btn-primary btn-sm" type="button" data-toggle="tooltip" title="EditVIP" asp-page="/VIP/EditVIPOgMenu" asp-route-id="@vip.VIPId"><i class="fa fa-edit"></i></a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a class="btn btn-danger btn-sm " type="button" data-toggle="tooltip" data-placement="top" title="DeleteVIP" asp-page="/VIP/DeleteVIPOgMenu" asp-route-id="@vip.VIPId"><i class="fa fa-trash"></i></a>
+                                        </li>
+                                    }
+                                }
+                                @{
+                                    if (Model.User.Identity.Name != null)
+                                    {
+                                    <li class="list-inline-item">
+                                    <a class="btn btn-primary" type="button" asp-page="/VIP/OrderVIPSammenMedMenu" asp-route-id="@vip.VIPId"><i class="fa fa-shopping-cart"></i></a>
+                                    </li>
+                                    }
+                                }
+                            </ul>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+<br />
+@{
+    if (Model.User.Identity.Name == "admin")
+    {
+        <p>
+            <a class="btn btn-primary" data-toggle="tooltip" title="Add VIP" asp-page="CreateVIPOgMenu"><i class="fa fa-plus-square mr-1"></i> Lav VIP Menu </a>
+        </p>
+    }
+    
+}
+
+<br />

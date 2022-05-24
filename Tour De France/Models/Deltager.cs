@@ -1,5 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Tour_De_France.Models
 {
@@ -7,16 +11,20 @@ namespace Tour_De_France.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
+        public int DeltagerId { get; set; }
         [Required]
         public string Name { get; set; }
         [Required]
         public string Mobil { get; set; }
         [Required]
         public string Email { get; set; }
-        public bool VIP { get; set; }
-        [Required]
+       [Required]
         public string Password { get; set; }
+        public bool VIP { get; set; }
+      
+
+        public virtual ICollection<Order> Orders { get; set; }
+        public virtual ICollection<EventOrder> EventOrders { get; set; }
 
         public Deltager()
         {

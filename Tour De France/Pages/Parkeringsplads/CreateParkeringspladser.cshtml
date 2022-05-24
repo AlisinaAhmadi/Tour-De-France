@@ -1,4 +1,36 @@
 ﻿@page
 @model Tour_De_France.Pages.Parkeringsplads.CreateParkeringspladserModel
-@{
-}
+@{ }
+
+
+
+<h3>Book en Parkeringsplads</h3>
+<div class="row">
+    <div class="col-md-2">
+        <form method="post">
+            <div class="form-group">
+                <h6> Id:</h6>
+                <input asp-for="@Model.ParkeringsPlads.ppId" class="form-control"/>
+                <span asp-validation-for="@Model.ParkeringsPlads.ppId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <h6> Antal:</h6>
+                <input asp-for="@Model.ParkeringsPlads.Count" class="form-control"/>
+                <span asp-validation-for="@Model.ParkeringsPlads.Count" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <h6> Ledig: </h6>
+                <input style="position: relative; right: 60px;" asp-for="@Model.ParkeringsPlads.Free" class="form-control"/>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Opret" class="btn btn-primary"/>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+<div>
+    <a asp-page="/Parkeringsplads/GetParkeringspladser">Parkeringsplads oversigt</a>
+</div>

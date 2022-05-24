@@ -12,7 +12,10 @@ namespace Tour_De_France.Models
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         [Required]
         [Key]
-        public int Time { get; set; }
+        public int Sid { get; set; }
+        [Required]
+        [DataType(DataType.Time)]
+        public DateTime Time { get; set; }
         [Required]
         public string Food { get; set; }
         [Required]
@@ -31,7 +34,7 @@ namespace Tour_De_France.Models
             
         }
 
-        public Spisetelt(int time, string food, string drinks, int price)
+        public Spisetelt(DateTime time, string food, string drinks, int price)
         {
             Time = time;
             Food = food;

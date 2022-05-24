@@ -1,6 +1,37 @@
-﻿body {
+﻿.vip {
+    /* The image used */
+    background-image: url("/Images/vip menu.jpg");
+    /* Full height */
+    height: 100%;
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
-.næstved {
-    position: relative;
-    text-align-all: left;
+
+.table {
+    background-color: #ffffff;
+    opacity: 0.9;
 }
+
+.tribune {
+    background-image: url("/Images/tribune.jpeg");
+    /* Full height */
+    height: 100%;
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+
+.zealand{
+    background-image: url("/Images/zealand.jpg");
+    /* Full height */
+    height: 100%;
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+

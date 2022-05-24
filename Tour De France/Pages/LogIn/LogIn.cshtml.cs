@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Drawing;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -24,38 +25,38 @@ namespace Tour_De_France.Pages.LogIn
         }
 
         [BindProperty]
-        public string Email { get; set; }
+        public string Name { get; set; }
         [BindProperty,DataType(DataType.Password)]
         public string Password { get; set; }
+        
         public string Message { get; set; }
 
         public async Task<IActionResult> OnPost()
         {
-            List<Deltager> deltagere = _deltagerService.Deltagere;
-            foreach (Deltager deltagers in deltagere)
+            List<Models.Deltager> deltagere = _deltagerService.Deltagere;
+            foreach (Models.Deltager deltagers in deltagere)
             {
-                if (Email == deltagers.Email)
+                if (Name == deltagers.Name)
                 {
                     var passwordHasher = new PasswordHasher<string>();
                     if (passwordHasher.VerifyHashedPassword(null, deltagers.Password, Password) == PasswordVerificationResult.Success)
                     {
                         var claims = new List<Claim>
                         {
-                            new Claim(ClaimTypes.Name, Email)
+                            new Claim(ClaimTypes.Name, Name)
                         };
 
-                        if (Email == "admin") claims.Add(new Claim(ClaimTypes.Role, "admin"));
+                        if (Name == "admin") claims.Add(new Claim(ClaimTypes.Role, "admin"));
 
                         var claimsIdentity =
                             new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                         await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
                             new ClaimsPrincipal(claimsIdentity));
-                        return RedirectToPage("/Event/GetAllEvents");
+                        return RedirectToPage("/Event/GetEvent");
                     }
                 }
             }
-
-            Message = "Invalid attempt";
+            Message = "Ugyldigt Password eller Navn";
             return Page();
         }
     }

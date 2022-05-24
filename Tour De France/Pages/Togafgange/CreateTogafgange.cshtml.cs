@@ -20,6 +20,7 @@ namespace Tour_De_France.Pages.Togafgange
         [BindProperty]
         public Models.Togafgang Togafgang { get; set; }
 
+
         public CreateTogafgangeModel(TogafgangeService Tservice)
         {
             togafgangeService = Tservice;

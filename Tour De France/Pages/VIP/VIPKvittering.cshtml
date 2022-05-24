@@ -1,0 +1,46 @@
+﻿@page
+@model Tour_De_France.Pages.VIP.VIPKvitteringModel
+@{
+}
+<h1>Mange tak for din bestilling! Her er din kvittering</h1>
+
+<h3>Her er hvad du har købt:</h3>
+
+<div class="test">
+    <table class="table table-bordered table-dark table-striped" width="60%">
+        <thead>
+        <tr class="btn-secondary active">
+            <th>Nr</th>
+            <th>Titel</th>
+            <th>Pris</th>
+            <th>Antal</th>
+            <th>Total pris</th>
+        </tr>
+        </thead>
+        <tbody>
+        @if (@Model.VIPOrders != null)
+        {
+            foreach (var order in Model.VIPOrders)
+            {
+            <tr class="btn-secondary">
+                <td>
+                    @order.VIP.VIPId
+                </td>
+                <td>
+                    @order.VIP.Titel
+                </td>
+                <td>
+                    @order.VIP.Price
+                </td>
+                <td>
+                    @order.Count
+                </td>
+                <td>
+                    @(order.Count * order.VIP.Price)
+                </td>
+            </tr>
+            }
+        }
+        </tbody>
+    </table>
+</div>

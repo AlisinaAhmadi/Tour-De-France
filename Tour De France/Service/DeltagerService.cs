@@ -10,9 +10,10 @@ namespace Tour_De_France.Service
     {
         public List<Deltager> Deltagere { get; set; }
 
-        public DbGenericService<Deltager> DbService { get; set; }
+        //public DbGenericService<Deltager> DbService { get; set; }
+        public DeltagerDbService DbService { get; set; }
 
-        public DeltagerService(DbGenericService<Deltager> dbService)
+        public DeltagerService(DeltagerDbService dbService)
         {
             DbService = dbService;
             Deltagere = DbService.GetObjectsAsync().Result.ToList();
@@ -23,9 +24,33 @@ namespace Tour_De_France.Service
             Deltagere.Add(deltager);
             await DbService.AddObjectAsync(deltager);
         }
-        public IEnumerable<Deltager> GetDeltager()
+
+        public Deltager GetDeltager(int id)
+        {
+            foreach (var deltager in Deltagere)
+            {
+                if (deltager.DeltagerId == id)
+                {
+                    return deltager;
+                }
+            }
+
+            return null;
+        }
+
+        public IEnumerable<Deltager> GetDeltagers()
         {
             return Deltagere;
+        }
+
+        public Deltager GetDeltagerByName(string name)
+        {
+            return Deltagere.Find(deltager => deltager.Name == name);
+        }
+
+        public async Task<Deltager> GetOrdersByDeltager(Deltager deltager)
+        {
+            return DbService.GetOrdersByDeltagerIdAsync(deltager.DeltagerId).Result;
         }
     }
 }

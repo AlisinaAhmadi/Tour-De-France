@@ -13,11 +13,11 @@ namespace Tour_De_France.Service
         private List<Spisetelt> spisetelts;
         private Spisetelt spisetelt;
 
-        public SpiseteltService()
-        {
-            spisetelts = MockSpistelt.GetmockSpisetelts();
+        //public SpiseteltService()
+        //{
+        //    spisetelts = MockSpistelt.GetmockSpisetelts();
 
-        }
+        //}
         public void AddSpisetelt(Spisetelt spisetelt)
         {
             spisetelt.Add(spisetelt);
