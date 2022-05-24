@@ -11,9 +11,10 @@ namespace Tour_De_France.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int Sid { get; set; }
+        public int Mid { get; set; }
         [Required]
-        public int Time { get; set; }
+       
+        public DateTime Time { get; set; }
         [Required]
         public string Band { get; set; }
         [Required]
@@ -26,12 +27,17 @@ namespace Tour_De_France.Models
             
         }
 
-        public Musiktelt(int time, string band, string drinks, int price)
+
+        public Musiktelt(DateTime time, string band, string drinks, int price)
         {
             Time = time;
             Band = band;
             Drinks = drinks;
             Price = price;
         }
+         
+     
+         
+
     }
 }

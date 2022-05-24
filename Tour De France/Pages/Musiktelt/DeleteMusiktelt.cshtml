@@ -1,0 +1,12 @@
+﻿@page
+@model Tour_De_France.Pages.Musiktelt.DeleteMusikteltModel
+@{
+}
+<h1>Delete Confirmation></h1>
+<div class="alert alert-danger">
+    <h5> Musiktelt - @Model.Musiktelt.Time</h5>
+    <form method="post">
+        <button type="submit" class="btn btn-danger">Yes</button>
+        <a class="btn btn-primary" asp-page="/Musiktelt/GetAllMusiktelt">No</a>
+    </form>
+</div>

@@ -1,0 +1,12 @@
+﻿@page "{id:int}"
+@model Tour_De_France.Pages.Spisetelt.DeleteSpiseteltModel
+@{
+}
+<h1>Delete Confirmation></h1>
+<div class="alert alert-danger">
+    <h5> Spisetelt - @Model.Spisetelt.Sid</h5>
+    <form method="post">
+        <button type="submit" class="btn btn-danger">Yes</button>
+        <a class="btn btn-primary" asp-page="/Spisetelt/GetAllSpisetelt">No</a>
+    </form>
+</div>

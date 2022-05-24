@@ -1,0 +1,75 @@
+﻿@page
+@model Tour_De_France.Pages.Musiktelt.GetAllMusikteltModel
+@{
+}
+<h1>Musiktelt</h1>
+<form method="post" class="form-inline">
+    <input asp-for="Time" class="form-control mr-1" placeholder="Enter search term" />
+    <input type="submit" asp-page-handler="NameSearch" value="Search" class="btn btn-primary" />
+</form>
+<br />
+<form method="post" class="form-inline">
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text">Min</span>
+        </div>
+        <input asp-for="Price" class="form-control mr-1" />
+
+        <div class="input-group-prepend">
+            <span class="input-group-text">Max</span>
+        </div>
+        <input asp-for="Price" class="form-control mr-1" />
+        <input type="submit" asp-page-handler="PriceFilter" value="Filter" class="btn btn-primary" />
+    </div>
+</form>
+<br />
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Time
+            </th>
+            <th>
+                Band
+            </th>
+            <th>
+                Drinks
+            </th>
+            <th>
+                Price
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.musiktelts)
+        {
+
+            <tr>
+                <td>
+                    @item.Time
+                </td>
+                <td>
+                    @item.Band
+                </td>
+                <td>
+                    @item.Band
+                </td>
+                <td>
+                    @item.Price
+                </td>
+                <td>
+                    <a class="btn btn-primary btn-sm" type="button" title="Edit" asp-page="/Musiktelt/EditMusiktelt" asp-route-id="@item.Mid">Edit</a>
+                    <a class="btn btn-danger btn-sm " type="button" title="Delete" asp-page="/Musiktelt/DeleteMusiktelt" asp-route-id="@item.Mid">Delete</a>
+                </td>
+
+
+            </tr>
+        }
+    </tbody>
+</table>
+
+<p>
+    <a class="btn btn-primary" data-toggle="tooltip" title="Add Musiktelt" asp-page="CreateMusiktelt"><i class="fa fa-plus-square mr-1">Lav Musiktelt</i></a>
+</p>

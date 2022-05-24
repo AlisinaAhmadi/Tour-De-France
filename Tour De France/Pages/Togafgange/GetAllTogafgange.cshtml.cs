@@ -11,7 +11,7 @@ namespace Tour_De_France.Pages.Togafgange
 {
     public class GetAllTogafgangeModel : PageModel
     {
-        private TogafgangeService togafgangeService;
+        private TogafgangService togafgangeService;
         public List<Models.Togafgang> togafgangs { get; private set; }
         [BindProperty] public string ArrivalK { get; set; }
         [BindProperty] public string DepartureK { get; set; }
@@ -19,7 +19,7 @@ namespace Tour_De_France.Pages.Togafgange
         [BindProperty] public string DepartureN { get; set; }
 
 
-        public GetAllTogafgangeModel(TogafgangeService togafgangeService)
+        public GetAllTogafgangeModel(TogafgangService togafgangeService)
         {
             this.togafgangeService = togafgangeService;
         }

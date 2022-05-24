@@ -37,11 +37,14 @@ namespace Tour_De_France
             services.AddSingleton<EventService, EventService>();
             services.AddSingleton<MusikteltService, MusikteltService>();
             services.AddSingleton<ParkeringspladsService, ParkeringspladsService>();
-            services.AddSingleton<TogafgangeService, TogafgangeService>();
+            services.AddSingleton<TogafgangService, TogafgangService>();
             services.AddSingleton<TribuneService,TribuneService>();
             services.AddSingleton<VIPService, VIPService>();
+            services.AddSingleton<SpiseteltService, SpiseteltService>();
             services.AddTransient<DbGenericService<Togafgang>,DbGenericService<Togafgang>>();
             services.AddTransient<DbGenericService<Deltager>,DbGenericService<Deltager>>();
+            services.AddTransient<DbGenericService<Spisetelt>, DbGenericService<Spisetelt>>();
+            services.AddTransient<DbGenericService<Musiktelt>, DbGenericService<Musiktelt>>();
 
             services.Configure<CookiePolicyOptions>(options =>
             {

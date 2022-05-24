@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Tour_De_France.Migrations
 {
@@ -43,15 +44,15 @@ namespace Tour_De_France.Migrations
                 name: "Musiktelte",
                 columns: table => new
                 {
-                    Sid = table.Column<int>(nullable: false),
-                    Time = table.Column<int>(nullable: false),
+                    Mid = table.Column<int>(nullable: false),
+                    Time = table.Column<DateTime>(nullable: false),
                     Band = table.Column<string>(nullable: false),
                     Drinks = table.Column<string>(nullable: false),
                     Price = table.Column<double>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Musiktelte", x => x.Sid);
+                    table.PrimaryKey("PK_Musiktelte", x => x.Mid);
                 });
 
             migrationBuilder.CreateTable(
@@ -71,14 +72,15 @@ namespace Tour_De_France.Migrations
                 name: "Spisetelte",
                 columns: table => new
                 {
-                    Time = table.Column<int>(nullable: false),
+                    Sid = table.Column<int>(nullable: false),
+                    Time = table.Column<DateTime>(nullable: false),
                     Food = table.Column<string>(nullable: false),
                     Drinks = table.Column<string>(nullable: false),
                     Price = table.Column<double>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Spisetelte", x => x.Time);
+                    table.PrimaryKey("PK_Spisetelte", x => x.Sid);
                 });
 
             migrationBuilder.CreateTable(
