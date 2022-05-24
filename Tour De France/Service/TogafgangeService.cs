@@ -7,13 +7,13 @@ using Tour_De_France.Models;
 
 namespace Tour_De_France.Service
 {
-    public class TogafgangeService
+    public class TogafgangService
     {
         private List<Togafgang> togafganges;
 
         public DbGenericService<Togafgang> DbService { get; set; }
 
-        public TogafgangeService(DbGenericService<Togafgang> dbService)
+        public TogafgangService(DbGenericService<Togafgang> dbService)
         {
             DbService = dbService;
             togafganges = dbService.GetObjectsAsync().Result.ToList();

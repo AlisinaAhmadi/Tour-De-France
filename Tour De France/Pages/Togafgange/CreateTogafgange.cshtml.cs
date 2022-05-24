@@ -14,13 +14,13 @@ namespace Tour_De_France.Pages.Togafgange
     //[Authorize(Roles = "admin")]
     public class CreateTogafgangeModel : PageModel
     {
-        private TogafgangeService togafgangeService;
+        private TogafgangService togafgangeService;
         private List<Models.Togafgang> togafgangs;
 
         [BindProperty]
         public Models.Togafgang Togafgang { get; set; }
 
-        public CreateTogafgangeModel(TogafgangeService Tservice)
+        public CreateTogafgangeModel(TogafgangService Tservice)
         {
             togafgangeService = Tservice;
             togafgangs = togafgangeService.GetTogafgange().ToList();

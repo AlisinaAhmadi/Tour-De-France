@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Tour_De_France.Mockdata;
 using Tour_De_France.Models;
 using Tour_De_France.Service;
 

@@ -1,0 +1,39 @@
+﻿@page
+@model Tour_De_France.Pages.Musiktelt.CreateMusikteltModel
+@{
+}
+<h1>CreateMusiktelt</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div class="form-group">
+                <label asp-for="@Model.Musiktelt.Time" class="control-label">Time </label>
+                <input asp-for="@Model.Musiktelt.Time " type ="time"class="form-control" />
+
+                <span asp-validation-for="@Model.Musiktelt.Time"   class="text-danger"></span>
+
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Musiktelt.Band" class="control-label">Band</label>
+                <input asp-for="@Model.Musiktelt.Band" class="form-control" />
+                <span asp-validation-for="@Model.Musiktelt.Band"   class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Musiktelt.Drinks" class="control-label">Drinks</label>
+                <input asp-for="@Model.Musiktelt.Drinks" class="form-control" />
+                <span asp-validation-for="@Model.Musiktelt.Drinks" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Musiktelt.Price" class="control-label"> Price </label>
+                <input asp-for="@Model.Musiktelt.Price" class="form-control" />
+                <span asp-validation-for="@Model.Musiktelt.Price"  class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+

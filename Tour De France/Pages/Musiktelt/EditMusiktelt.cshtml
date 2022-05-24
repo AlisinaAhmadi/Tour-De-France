@@ -1,0 +1,46 @@
+﻿@page
+@model Tour_De_France.Pages.Musiktelt.EditMusikteltModel
+@{
+}
+
+<h1>Edit Musiktelt</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div class="form-group">
+                <label asp-for="Musiktelt.Mid" class="control-lable"></label>
+                <input asp-for="Musiktelt.Mid" class="form-control" readonly="@(true)" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Musiktelt.Time" class="control-lable"></label>
+                <input asp-for="Musiktelt.Time" class="form-control" />
+                <span asp-validation-for="Musiktelt.Time" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Musiktelt.Band" class="control-lable"></label>
+                <input asp-for="Musiktelt.Band" class="form-control" />
+                <span asp-validation-for="Musiktelt.Band" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Musiktelt.Drinks" class="control-lable"></label>
+                <input asp-for="Musiktelt.Drinks" class="form-control" />
+                <span asp-validation-for="Musiktelt.Drinks" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Musiktelt.Price" class="control-lable"></label>
+                <input asp-for="Musiktelt.Price" class="form-control" />
+                <span asp-validation-for="Musiktelt.Price" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                <input type="submit" value="Update" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<div>
+    <a asp-page="/Musiktelt/GetAllMusiktelts">Back to List</a>
+</div>
+
