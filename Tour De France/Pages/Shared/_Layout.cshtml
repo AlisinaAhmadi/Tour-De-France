@@ -44,14 +44,14 @@
                             </li>
                         }
                     }
-                    @{
+                    @*@{
                         if (Context.User.Identity.Name == "admin")
-                        {
+                        {*@
                             <li class="nav-item">
-                                <a class="nav-link" asp-area=""asp-page="/Admin/CreateDeltager">Lav Bruger</a>
+                                <a class="nav-link" asp-area=""asp-page="/Admin/CreateDeltager">Opret Bruger</a>
                             </li>
-                        }
-                    }
+                        @*}
+                    }*@
                 </ul>
                 <ul class="navbar-nav" style="position: relative; left: 50px; top: 8px;">
 
