@@ -17,7 +17,7 @@ namespace Tour_De_France.Pages.Event
         private EventOrderService _eventOrderService;
         public Models.Event Event { get; set; }
         public Models.Deltager Deltager { get; set; }
-        public EventOrder EventOrder { get; set; } = new EventOrder();
+        public Models.EventOrder EventOrder { get; set; } = new EventOrder();
 
         [BindProperty] public int Count { get; set; }
 
@@ -45,7 +45,7 @@ namespace Tour_De_France.Pages.Event
             EventOrder.EventId = Event.EventId;
             EventOrder.Count = Count;
             _eventOrderService.AddEventOrder(EventOrder);
-            return RedirectToPage("/Event/EventKvittering");
+            return RedirectToPage("../Event/EventKvittering");
         }
     }
 }

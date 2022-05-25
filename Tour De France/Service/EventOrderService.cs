@@ -8,7 +8,7 @@ namespace Tour_De_France.Service
 {
     public class EventOrderService
     {
-        private List<EventOrder> EventOrderList { get; set; }
+        public List<EventOrder> EventOrderList { get; set; }
         public DbGenericService<EventOrder> DbService { get; set; }
         public EventOrderService(DbGenericService<EventOrder> dbService)
         {

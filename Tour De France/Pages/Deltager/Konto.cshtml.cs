@@ -11,20 +11,16 @@ namespace Tour_De_France.Pages.Deltager
     public class KontoModel : PageModel
     {
         private DeltagerService _deltagerService;
-        [BindProperty]
-        public Models.Deltager Deltager { get; set; }
-
-        [BindProperty] public int DeltagerId { get; set; }
-
+        public List<Models.Deltager> Deltagers { get; set; }
+        [BindProperty] public Models.Deltager Deltager { get; set; }
         public KontoModel(DeltagerService deltagerService)
         {
             _deltagerService = deltagerService;
         }
 
-        public IActionResult OnGet(int id)
+        public void OnGet()
         {
-            Deltager = _deltagerService.GetDeltager(id);
-            return Page();
+            Deltager = _deltagerService.GetDeltagerByName(HttpContext.User.Identity.Name);
         }
     }
 }

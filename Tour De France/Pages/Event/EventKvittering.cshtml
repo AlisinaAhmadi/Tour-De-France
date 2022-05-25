@@ -1,12 +1,12 @@
 ﻿@page
-@using Tour_De_France.Models
 @model Tour_De_France.Pages.Event.EventKvitteringModel
 @{
 }
 <h1>Mange tak for din tilmeldese! Her er din kvittering</h1>
-
+<body class="zealand">
+</body>
 <div class="test">
-    <table class="table table-bordered table-dark table-striped" width="60%">
+    <table class="table table-bordered table-dark table-hover table-striped" width="60%">
         <thead>
             <tr class="btn-secondary active">
                 <th>Event ID</th>
@@ -16,19 +16,19 @@
             </tr>
         </thead>
         <tbody>
-            @if (@Model.MyEventOrders != null)
+            @if (@Model.EventOrders != null)
             {
-                foreach (var tilmeld in Model.MyEventOrders)
+                foreach (var tilmeld in Model.EventOrders)
                 {
                     <tr class="btn-secondary">
                         <td>
-                            @tilmeld.Event.EventId
+                            @tilmeld.EventOrderId
                         </td>
                         <td>
                             @tilmeld.Event.Titel
                         </td>
                         <td>
-                            @tilmeld.Deltager.DeltagerId
+                            @tilmeld.DeltagerId
                         </td>
                         <td>
                             @tilmeld.Count
@@ -39,8 +39,4 @@
             }
         </tbody>
     </table>
-
-    <p>
-        Tillykke du har tilmeldt dig dette event!
-    </p>
 </div>

@@ -10,7 +10,7 @@ using Tour_De_France.Models;
 namespace Tour_De_France.Migrations
 {
     [DbContext(typeof(EventDbContext))]
-    [Migration("20220524141717_Tour_De_France")]
+    [Migration("20220524235849_Tour_De_France")]
     partial class Tour_De_France
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
