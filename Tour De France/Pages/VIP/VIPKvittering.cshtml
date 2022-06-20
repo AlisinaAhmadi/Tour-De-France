@@ -15,6 +15,7 @@
             <th>Pris</th>
             <th>Antal</th>
             <th>Total pris</th>
+            @*<th>Tilkøbt champagne menu</th>*@
         </tr>
         </thead>
         <tbody>
@@ -38,6 +39,9 @@
                 <td>
                     @(order.Count * order.VIP.Price)
                 </td>
+                @*<td>
+                    @order.Champagne
+                </td>*@
             </tr>
             }
         }

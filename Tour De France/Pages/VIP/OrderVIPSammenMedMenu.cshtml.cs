@@ -49,6 +49,7 @@ namespace Tour_De_France.Pages.VIP
             Order.DeltagerId = Deltager.DeltagerId;
             Order.VIPId = VIP.VIPId;
             Order.Count = Count;
+            Order.Champagne = Champagne;
             _orderService.AddOrder(Order);
             return RedirectToPage("../VIP/VIPKvittering");
         }

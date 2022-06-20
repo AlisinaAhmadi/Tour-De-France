@@ -1,4 +1,4 @@
-﻿@page
+﻿@page 
 @model Tour_De_France.Pages.VIP.OrderVIPSammenMedMenuModel
 @{
 }
@@ -12,14 +12,16 @@
         <div>
             VIP Menu: @Model.VIP.Titel
         </div>
-        <div>
-            Vil du gerne have champagne menu? <input asp-for="@Model.Champagne" class="form-control" />
-        </div>
-
+        <form>
+            <div>
+                Vil du gerne have champagne menu <input type="checkbox" id="vip-champagne" asp-for="@Model.Champagne" class="form-control" /><br/>
+            </div>
+        </form>
         <form method="post">
-            <p>Køb <input asp-for="@Model.Count" class="form-control" /></p>
+           
+            <p>Køb <input id="vip-count" asp-for="@Model.Count" class="form-control"/></p>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" id="vip-bestil" value="Create" class="btn btn-primary"/>
             </div>
         </form>
     </div>
