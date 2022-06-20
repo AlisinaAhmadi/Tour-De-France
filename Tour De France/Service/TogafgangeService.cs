@@ -45,31 +45,31 @@ namespace Tour_De_France.Service
 
         public IEnumerable<Togafgang> SortByArrival()
         {
-            return from item in togafganges
-                   orderby item.Arrival
-                   select item;
+            return from togafgang in togafganges
+                   orderby togafgang.Arrival
+                   select togafgang;
         }
 
         public IEnumerable<Togafgang> SortByArrivalDescending()
         {
-            return from item in togafganges
-                   orderby item.Arrival descending
-                   select item;
+            return from togafgang in togafganges
+                   orderby togafgang.Arrival descending
+                   select togafgang;
         }
 
 
         public IEnumerable<Togafgang> SortByDeparture()
         {
-            return from item in togafganges
-                orderby item.Departure
-                select item;
+            return from togafgang in togafganges
+                orderby togafgang.Departure
+                select togafgang;
         }
 
         public IEnumerable<Togafgang> SortByDepartureDescending()
         {
-            return from item in togafganges
-                orderby item.Departure descending
-                select item;
+            return from togafgang in togafganges
+                orderby togafgang.Departure descending
+                select togafgang;
         }
 
         public async Task DeleteTogafgange(int togafgangId)

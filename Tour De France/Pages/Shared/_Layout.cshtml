@@ -12,9 +12,9 @@
 </head>
 <body>
 <header>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+    <nav id="testunit" class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
         <div class="container">
-            <a class="navbar-brand" asp-area="" asp-page="/Event/GetEvent"> <img src="Images/zealand logo.jpg"/></a>
+            <a class="navbar-brand" asp-area="" asp-page="/Event/GetEvent"> <img id="homepage" src="Images/zealand logo.jpg"/></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -40,7 +40,7 @@
                                 <a class="nav-link" asp-area=""asp-page="/Parkeringsplads/Parkeringspladsinfo">Parkering</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" asp-area=""asp-page="/VIP/VIPOgMenu">VIP</a>
+                                <a class="nav-link" id="vip" asp-area=""asp-page="/VIP/VIPOgMenu">VIP</a>
                             </li>
                         }
                     }
@@ -59,7 +59,7 @@
                         if (Context.User.Identity.Name == null)
                         {
                             <li class="nav-item" style="position: relative; left: 25px; top: -8px;">
-                                <a class="nav-link" asp-area="" asp-page="/LogIn/LogIn">Log ind</a>
+                                <a class="nav-link" id="knap-til-login" asp-area="" asp-page="/LogIn/LogIn">Log ind</a>
                             </li>
                         }
                         else
