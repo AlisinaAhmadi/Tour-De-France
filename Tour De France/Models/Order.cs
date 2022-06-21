@@ -16,8 +16,6 @@ namespace Tour_De_France.Models
         public int OrderId { get; set; }
         [Range(Int32.MaxValue, 1, ErrorMessage = "Kan bestille en!")]
         public int Count { get; set; }
-        [AllowNull]
-        public bool Champagne { get; set; }
         [Required]
         public int DeltagerId { get; set; }
         public Deltager Deltager { get; set; }

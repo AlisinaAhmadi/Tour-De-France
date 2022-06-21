@@ -72,11 +72,6 @@ namespace Tour_De_France.Models.Tests
 
             Thread.Sleep(5000);
 
-            IWebElement vipElementChampagne = _driver.FindElement(By.Id("vip-champagne"));
-            vipElementChampagne.Click();
-
-            Thread.Sleep(5000);
-
             IWebElement vipElementCount = _driver.FindElement(By.Id("vip-count"));
             vipElementCount.SendKeys(Keys.ArrowRight + Keys.Backspace + "1");
 

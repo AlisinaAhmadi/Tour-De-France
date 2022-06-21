@@ -64,13 +64,13 @@
                     @item.Band
                 </td>
                 <td>
-                    @item.Band
+                    @item.Drinks
                 </td>
                 <td>
                     @item.Price
                 </td>
                 @{
-                    if (Model.User.Identity.Name != "admin@edu.zealand.dk")
+                    if (Model.User.Identity.Name == "admin")
                     {
                         <td>
                             <a class="btn btn-primary btn-sm" type="button" title="Edit" asp-page="/Musiktelt/EditMusiktelt" asp-route-id="@item.Mid">Edit</a>
