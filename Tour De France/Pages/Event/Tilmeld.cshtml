@@ -3,12 +3,12 @@
 @{
 }
 <h1>Event Tilmeldelse</h1>
-
+<body class="zealand">
+</body>
 <div class="row">
     <div class="col-md-4">
         <div>
-            Deltagers Navn: @Model.Deltager.Name med id: @Model.Deltager.DeltagerId
-            <span asp-validation-for="EventOrder.DeltagerId"></span>
+            Deltagers Navn: @Model.Deltager.Name
         </div>
         <div>
             Event: @Model.Event.Titel
@@ -23,5 +23,5 @@
     </div>
 </div>
 <div>
-    <a asp-page="/Event/TilmeldeseKvittering"></a>
+    <a asp-page="../Event/TilmeldeseKvittering"></a>
 </div>

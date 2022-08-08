@@ -8,14 +8,13 @@
     <link rel="stylesheet" href="~/css/EventCss.css" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
-    @*<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.2.1/slate/bootstrap.min.css">*@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 </head>
 <body>
 <header>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+    <nav id="testunit" class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
         <div class="container">
-            <a class="navbar-brand" asp-area="" asp-page="/Event/GetEvent"> <img src="Images/zealand logo.jpg"/></a>
+            <a class="navbar-brand" asp-area="" asp-page="/Event/GetEvent"> <img id="homepage" src="Images/zealand logo.jpg"/></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -41,7 +40,7 @@
                                 <a class="nav-link" asp-area=""asp-page="/Parkeringsplads/Parkeringspladsinfo">Parkering</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" asp-area=""asp-page="/VIP/VIPOgMenu">VIP</a>
+                                <a class="nav-link" id="vip" asp-area=""asp-page="/VIP/VIPOgMenu">VIP</a>
                             </li>
                         }
                     }
@@ -49,38 +48,37 @@
                         if (Context.User.Identity.Name == "admin")
                         {*@
                             <li class="nav-item">
-                                <a class="nav-link" asp-area=""asp-page="/Admin/CreateDeltager">Lav Bruger</a>
+                                <a class="nav-link" asp-area=""asp-page="/Admin/CreateDeltager">Opret Bruger</a>
                             </li>
                         @*}
                     }*@
                 </ul>
-                <ul class="navbar-nav">
+                <ul class="navbar-nav" style="position: relative; left: 50px; top: 8px;">
+
                     @{
                         if (Context.User.Identity.Name == null)
                         {
-                            <li class="nav-item">
-                                <a class="nav-link" asp-area="" asp-page="/LogIn/LogIn">Login</a>
+                            <li class="nav-item" style="position: relative; left: 25px; top: -8px;">
+                                <a class="nav-link" id="knap-til-login" asp-area="" asp-page="/LogIn/LogIn">Log ind</a>
                             </li>
                         }
                         else
                         {
                             if (Context.User.Identity.Name != null)
                             {
-                                @*<li class="nav-item">
-                                    <a class="nav-link" asp-area="" asp-page="/Deltager/Konto">Konto</a>
-                                </li>*@
                                 <li class="nav-item">
-                                    <a class="nav-link" asp-area="" asp-page="/VIP/VIPKvittering">Min VIP</a>
+                                <a class="nav-link" asp-area="" asp-page="/Deltager/Konto"> Konto</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="" asp-page="/VIP/VIPKvittering">Min VIP </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" asp-area="" asp-page="/Event/EventKvittering">Mine Events</a>
                                 </li>
-                                <li class="nav-item nav-link mr-3">
-                                    User:  @Context.User.Identity.Name
-                                </li>
+                                <p class="navbar-text nav-item">Bruger: @Context.User.Identity.Name</p>
                             }
-                            <li class="nav-item">
-                                <a class="nav-link" asp-area="" asp-page="/LogIn/LogOut">Logout</a>
+                            <li class="nav-item" style="position: relative; left: 25px;">
+                                <a class="nav-link" asp-area="" asp-page="/LogIn/LogOut"> Log ud </a>
                             </li>
                         }
                     }

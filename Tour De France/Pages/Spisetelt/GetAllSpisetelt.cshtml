@@ -3,79 +3,106 @@
 @{
 }
 <h1>Spisetelt</h1>
-<form method="post" class="form-inline">
-    <input asp-for="Time" class="form-control mr-1" placeholder="Enter search term" />
-    <input type="submit" asp-page-handler="" value="Search" class="btn btn-primary" />
-</form>
-<br />
-<form method="post" class="form-inline">
-    <div class="input-group mb-3">
-        <div class="input-group-prepend">
-            <span class="input-group-text">Min</span>
-        </div>
-        <input asp-for="Price" class="form-control mr-1" />
+@*<form method="post" class="form-inline">
+        <input asp-for="Time" class="form-control mr-1" placeholder="Enter search term" />
+        <input type="submit" asp-page-handler="" value="Search" class="btn btn-primary" />
+    </form>
+    <br />
+    <form method="post" class="form-inline">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Min</span>
+            </div>
+            <input asp-for="Price" class="form-control mr-1" />
 
-        <div class="input-group-prepend">
-            <span class="input-group-text">Max</span>
+            <div class="input-group-prepend">
+                <span class="input-group-text">Max</span>
+            </div>
+            <input asp-for="Price" class="form-control mr-1" />
+            <input type="submit" asp-page-handler="PriceFilter" value="Filter" class="btn btn-primary" />
         </div>
-        <input asp-for="Price" class="form-control mr-1" />
-        <input type="submit" asp-page-handler="PriceFilter" value="Filter" class="btn btn-primary" />
-    </div>
-</form>
-<br />
+    </form>
+    <br />*@
+<body class="zealand">
+</body>
 
 <table class="table">
     <thead>
-    <tr>
-        <th>
-            Id
-        </th>
-        <th>
-            Time
-        </th>
-        <th>
-            Food
-        </th>
-        <th>
-            Drinks
-        </th>
-        <th>
-            Price
-        </th>
-
-    </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.Spisetelts)
-        {
-
         <tr>
-            <td>
-                @item.Sid
-            </td>
-            <td>
-                @item.Time
-            </td>
-            <td>
-                @item.Food
-            </td>
-            <td>
-                @item.Drinks
-            </td>
-            <td>
-                @item.Price
-            </td>
-            <td>
-                <a class="btn btn-primary btn-sm" type="button" title="Edit" asp-page="EiditSpisetelt" asp-route-id="@item.Sid">Edit</a>
-                <a class="btn btn-danger btn-sm " type="button" title="Delete" asp-page="DeleteSpisetelt" asp-route-id="@item.Sid">Delete</a>
-            </td>
+            <th>
+                Id
+            </th>
+            <th>
+                Time
+            </th>
+            <th>
+                Food
+            </th>
+            <th>
+                Drinks
+            </th>
+            <th>
+                Price
+            </th>
+            @{
+                if (Model.User.Identity.Name == "admin")
+                {
+                    <th>
+                        Admin controls
+                    </th>
+                }
+            }
 
 
         </tr>
+    </thead>
+    <tbody>
+        @if (Model.Spisetelts != null)
+        {
+            @foreach (var item in Model.Spisetelts)
+            {
+
+                <tr>
+                    <td>
+                        @item.Sid
+                    </td>
+                    <td>
+                        @item.Time
+                    </td>
+                    <td>
+                        @item.Food
+                    </td>
+                    <td>
+                        @item.Drinks
+                    </td>
+                    <td>
+                        @item.Price
+                    </td>
+                    @{
+                        if (Model.User.Identity.Name == "admin")
+                        {
+                            <td>
+                                <a class="btn btn-primary btn-sm" type="button" title="Edit" asp-page="EiditSpisetelt" asp-route-id="@item.Sid">Edit</a>
+                                <a class="btn btn-danger btn-sm " type="button" title="Delete" asp-page="DeleteSpisetelt" asp-route-id="@item.Sid">Delete</a>
+                            </td>
+                        }
+                    }
+
+
+
+                </tr>
+            }
         }
+
     </tbody>
 </table>
 
-<p>
-    <a class="btn btn-primary" data-toggle="tooltip" title="Add Spisetelt" asp-page="CreateSpisetelt"><i class="fa fa-plus-square mr-1">Lav Spisetelt</i></a>
-</p>
+@{
+    if (Model.User.Identity.Name == "admin")
+    {
+        <p>
+            <a class="btn btn-primary" data-toggle="tooltip" title="Add Spisetelt" asp-page="CreateSpisetelt"><i class="fa fa-plus-square mr-1">Lav Spisetelt</i></a>
+        </p>
+    }
+}
+

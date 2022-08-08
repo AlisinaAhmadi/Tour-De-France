@@ -3,6 +3,8 @@
 @model Tour_De_France.Pages.Parkeringsplads.GetParkeringspladserModel
 @{
 }
+<body class="zealand">
+</body>
 <div class="Parkeringsplads">
     <table class="table table-bordered table-dark table-striped">
         <thead>
@@ -44,14 +46,20 @@
                             @parkingplads.Free
                         </td>
                         <td>
-                            <ul class="list-inline m-sm-0">
-                                <li class="list-inline-item">
-                                    <a class="btn btn-primary btn-md" type="button" data-toggle="tooltip" title="Updatér" asp-page="UpdateParkeringsplads" asp-route-id="@parkingplads.ppId"><i class="fa fa-edit"></i></a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a class="btn btn-danger btn-md " type="button" data-toggle="tooltip" data-placement="top" title="Delete" asp-page="DeleteParkeringsplads" asp-route-id="@parkingplads.ppId"><i class="fa fa-trash"></i></a>
-                                </li>
-                            </ul>
+                            @{
+                                if (Model.User.Identity.Name == "admin")
+                                {
+                                    <ul class="list-inline m-sm-0">
+                                        <li class="list-inline-item">
+                                            <a class="btn btn-primary btn-md" type="button" data-toggle="tooltip" title="Updatér" asp-page="UpdateParkeringsplads" asp-route-id="@parkingplads.ppId"><i class="fa fa-edit"></i></a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a class="btn btn-danger btn-md " type="button" data-toggle="tooltip" data-placement="top" title="Delete" asp-page="DeleteParkeringsplads" asp-route-id="@parkingplads.ppId"><i class="fa fa-trash"></i></a>
+                                        </li>
+                                    </ul>
+                                }
+                            }
+                        
                         </td>
                     </tr>
                 }

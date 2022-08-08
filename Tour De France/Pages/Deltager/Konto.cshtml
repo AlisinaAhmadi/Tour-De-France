@@ -5,77 +5,31 @@
 <header style="text-align: center;">
     <h1 style="text-size-adjust: 150%;"><strong>Konto</strong></h1>
 </header>
-
-<body class="zealand">
-</body>
-
-<br />
-<div class="table">
-    <table class="table table-bordered table-striped table-dark" width="60%">
-        <col style="width: 7%">
-        <col style="width: 7%">
-        <col style="width: 74%">
-        <col style="width: 10%">
-        <col style="width: 9%">
-        <thead>
-            <tr class="btn-secondary active">
-                <th>
-                    <div class="d-flex justify-content-between p-0">
-                        <div><h5> Id </h5></div>
-                    </div>
-                </th>
-                <th>
-                    <div class="d-flex justify-content-between p-0">
-                        <div><h5>Navn </h5></div>
-                    </div>
-                </th>
-                <th>
-                    <div class="d-flex justify-content-between p-0">
-                        <div>
-                            <h5>Mobil </h5>
-                        </div>
-                    </div>
-                </th>
-                <th>
-                    <div class="d-flex justify-content-between p-0">
-                        <div>
-                            <h5>Email </h5>
-                        </div>
-                    </div>
-                </th>
-                <th>
-                    <div class="d-flex justify-content-between p-0">
-                        <div>
-                            <h5>VIP </h5>
-                        </div>
-                    </div>
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-        <tr class="btn-secondary">
-            <td>
-                @Model.Deltager.DeltagerId
-            </td>
-            <td>
+<div class="row zealand">
+    <div class="col-md-4">
+        <form method="post">
+            <div class="form-group">
+                <p>Navn</p>
                 @Model.Deltager.Name
-            </td>
-            <td>
+                @*<span asp-validation-for="@Model.Name" class="text-danger"></span>*@
+            </div>
+            <div class="form-group">
+                <p>Tlf nr</p>
                 @Model.Deltager.Mobil
-            </td>
-            <td>
+            </div>
+            <div class="form-group">
+                <p>E-mail</p>
                 @Model.Deltager.Email
-            </td>
-            @*@{
-                if (Model.DeltagerId)
-                {
-                    
-                }
-            }*@
-            <td>
+            </div>
+            <div class="form-group">
+                <p>VIP</p>
                 @Model.Deltager.VIP
-            </td>
-            </tr>
-        </tbody>
-    </table>
+            </div>
+        </form>
+    </div>
 </div>
+@*<div>
+<p>
+    <a class="btn btn-danger" data-toggle="tooltip" title="Delete Password" asp-page="/Deltager/DeletePassword" asp-route-id="@Model.Deltager.DeltagerId"><i class="fa fa-trash"></i> Ændre Kodeord </a>
+</p>
+</div>*@

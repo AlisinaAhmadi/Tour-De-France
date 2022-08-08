@@ -12,12 +12,14 @@ namespace Tour_De_France.Pages.VIP
     public class VIPKvitteringModel : PageModel
     {
         private DeltagerService _deltagerService;
+  
         public IEnumerable<Models.Order> VIPOrders { get; set; }
 
-
+        //[BindProperty] public bool Champagne { get; set; }
         public VIPKvitteringModel(DeltagerService deltagerService)
         {
             _deltagerService = deltagerService;
+
         }
         public async Task<IActionResult> OnGet()
         {

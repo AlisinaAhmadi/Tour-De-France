@@ -18,7 +18,7 @@ namespace Tour_De_France.Models
         public string Mobil { get; set; }
         [Required]
         public string Email { get; set; }
-       [Required]
+        [Required]
         public string Password { get; set; }
         public bool VIP { get; set; }
       

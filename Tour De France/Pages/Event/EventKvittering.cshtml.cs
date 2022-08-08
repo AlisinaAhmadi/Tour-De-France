@@ -11,20 +11,18 @@ namespace Tour_De_France.Pages.Event
 {
     public class EventKvitteringModel : PageModel
     {
-        public DeltagerService _deltagerService { get; set; }
-        public IEnumerable<Models.EventOrder> MyEventOrders { get; set; }
-
-        public bool VIP { get; set; }
+        public DeltagerService DeltagerService { get; set; }
+        public IEnumerable<Models.EventOrder> EventOrders { get; set; }
 
         public EventKvitteringModel(DeltagerService deltagerService)
         {
-            _deltagerService = deltagerService;
+            DeltagerService = deltagerService;
         }
 
         public async Task<IActionResult> OnGet()
         {
-            Models.Deltager currentUser = _deltagerService.GetDeltagerByName(HttpContext.User.Identity.Name);
-            MyEventOrders = _deltagerService.GetOrdersByDeltager(currentUser).Result.EventOrders;
+            Models.Deltager currentUser = DeltagerService.GetDeltagerByName(HttpContext.User.Identity.Name);
+            EventOrders = DeltagerService.GetOrdersByDeltager(currentUser).Result.EventOrders;
             return Page();
         }
     }
