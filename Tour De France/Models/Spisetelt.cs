@@ -14,6 +14,10 @@ namespace Tour_De_France.Models
         public int Sid { get; set; }
 
         [Required]
+        [Key]
+        public int Sid { get; set; }
+        [Required]
+        [DataType(DataType.Time)]
         public DateTime Time { get; set; }
         [Required]
         public string Food { get; set; }
@@ -28,7 +32,7 @@ namespace Tour_De_France.Models
             
         }
 
-        public Spisetelt(int sid,DateTime time, string food, string drinks, double price)
+        public Spisetelt(DateTime time, string food, string drinks, int price)
         {
             Sid = sid;
             Time = time;
